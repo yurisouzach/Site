@@ -2,7 +2,7 @@
 const { createApp } = Vue;
 //import { createApp } from 'vue';
 const port = process.env.PORT || 3000;
-import Router from './router.js'
+//import Router from './router.js'
 
 const loginComponent = {
   data() {
@@ -406,4 +406,5 @@ export default loginComponent;
 
 const app = Vue.createApp(loginComponent);
 app.mount('#app');
+
 
