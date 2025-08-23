@@ -184,7 +184,8 @@ const loginComponent = {
     },
 
     async validarConfirmacao(pValor, pElemento) {
-      this.nomeConv = await this.ConfirmarConvidado(pValor);
+      let nome = this.processarNome(pValor);
+      this.nomeConv = await this.ConfirmarConvidado(nome);
       return this.nomeConv?.nome != null && this.nomeConv?.sucesso;
     },
 
@@ -376,7 +377,7 @@ const loginComponent = {
         }
         return null;
       } catch (error) {
-        console.error('Erro ao buscar senha:', error);
+        console.error('Erro ao buscar convidado:', error);
         return null;
       }
     },
