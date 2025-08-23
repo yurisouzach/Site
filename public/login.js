@@ -111,20 +111,20 @@ const loginComponent = {
       let retorno;
             
       if (pTitulo === "INSIRA A SENHA") {
-        retorno = await pSelf.validarSenha(pValor, novaDiv, pSelf);
-        if (retorno) {
-          pSelf.fechar(novaDiv);
+        //retorno = await pSelf.validarSenha(pValor, novaDiv, pSelf);
+        //if (retorno) {
+        pSelf.fechar(novaDiv);
           //pSelf.Router.push('/presentes');
-          pSelf.CriarModalManut();
-        }
+        pSelf.CriarModalManut();
+        //}
       } 
       else if (pTitulo === "INSIRA SEU NOME COMPLETO" && pPlaceholder === "Insira seu nome") {
-        retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
-        if (retorno) {
-          pSelf.fechar(novaDiv);
+        //retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
+        //if (retorno) {
+        pSelf.fechar(novaDiv);
           //pSelf.Router.push('/presentes');
-          pSelf.CriarModalManut();
-        }
+        pSelf.CriarModalManut();
+        //}
       }
       else if (pPlaceholder === "Insira seu nome para confirmar") {
         retorno = await pSelf.validarConvidado(pValor, novaDiv, true);
@@ -241,7 +241,7 @@ const loginComponent = {
         if (botaoConfirmar) {
           botaoConfirmar.addEventListener("click", async () => {
             fechar();
-            await self.ConfirmarConvidado(pValor);
+            //await self.ConfirmarConvidado(pValor);
             //self.Router.push('/presentes');
             pSelf.CriarModalManut();
           });
@@ -312,7 +312,7 @@ const loginComponent = {
         const confirmar = async () => {
           if (input.value) {
             this.senhaDev = input.value;
-            await this.salvarSenha(this.senhaDev);
+            //await this.salvarSenha(this.senhaDev);
             fechar();
             //this.Router.push('/presentes');
             pSelf.CriarModalManut();
