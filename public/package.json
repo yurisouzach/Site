@@ -1,0 +1,12 @@
+{
+  "name": "casamento",
+  "version": "1.0.0",
+  "main": "login.js",
+  "scripts": {
+    "start": "node ./API.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
