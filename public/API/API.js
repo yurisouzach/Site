@@ -26,7 +26,7 @@ app.get('/getConvidado', async (req, res) => {
   try {
     const { nome } = req.query;
     const result = await pool.query(
-      'SELECT * FROM convidados WHERE "Nome" = $1',
+      'SELECT * FROM convidados WHERE "nome" = $1',
       [nome]
     );
 
@@ -48,7 +48,7 @@ app.get('/getConvidado', async (req, res) => {
 
 app.get('/dadosDev', async (req, res) => {
   try {
-    const result = await pool.query('select * from SenhaDev');
+    const result = await pool.query('select * from senhadev');
     if (result.rows.length > 0) {
         res.json({
             sucesso: true,
@@ -98,7 +98,7 @@ app.put('/SalvarSenha', async (req, res) => {
 app.put('/ConfirmaConvidado', async (req, res) => {
   try {
     const { Nome } = req.query;
-    const result = await pool.query('update convidados set confirmado = true where "Nome" = $1', [Nome])
+    const result = await pool.query('update convidados set confirmado = true where "nome" = $1', [Nome])
     res.json({
       sucesso: true,
       hasData: result.rows.length > 0,
