@@ -9,11 +9,14 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'Casamento',
-    password: '123',
-    port: 5432,
+  user: 'postgres',
+  host: 'caboose.proxy.rlwy.net',
+  database: 'railway',
+  password: 'lripdNbNBjuqfsTWUqsONSNqHFlDqyzs',
+  port: 39410,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.get('/getConvidado', async (req, res) => {
