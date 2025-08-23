@@ -245,7 +245,7 @@ body, html {
 }
 @media (max-height: 1080px) {
   body {
-    background-image: url('public/images/fundo.jpg')!important;
+    background-image: url('images/fundo.jpg')!important;
     background-size: cover !important;
     background-position-x: -0px !important;
     background-position-y: -100px !important;
@@ -265,11 +265,12 @@ body, html {
 }
 @media (max-height: 858px) and (min-width: 1440px) {
     body {
-    background-image: url('public/images/fundo.jpg')!important;
+    background-image: url('images/fundo.jpg')!important;
     background-size: cover !important;
     background-position-y: -80px !important;
   }
 }
+
 
 
 
