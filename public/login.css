@@ -248,11 +248,11 @@ body, html {
     button {
         width: 400px;
         height: 60px;
-        font-size: 20px;
+        font-size: 25px;
     }
     .txtSenha {
         height: 40px;
-        font-size: 25px;
+        font-size: 20px;
     }
 }
 @media (max-height: 1080px) {
