@@ -1,0 +1,76 @@
+.headder {
+    background-color: black;
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;   
+    justify-content: center;
+    color: aliceblue;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.header h1, .header p {
+    font-size: clamp(14px, 3vw, 24px);
+    white-space: normal;
+    text-align: center;
+    margin: 2px 0;
+    width: 90%;
+}
+
+.body {
+    flex: 1;
+    background-color: brown;
+    width: 70%;
+    flex-direction: column;
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.pesquisa {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+    
+}
+
+.presentes {
+    background-color: burlywood;
+    height: 100%;
+}
+
+#titulo {
+    padding-left: 10px;
+}
+
+#texto {
+    padding-left: 10px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 100%;
+}

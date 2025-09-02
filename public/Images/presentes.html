@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="presentes.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="presentes.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="headder">
+            <h1 id="titulo">{{ titulo }}</h1>
+            <p id="texto">Nesta página, você encontrará uma lista dos presentes que escolhemos com muito carinho. Como estamos em um momento especial de organização, pedimos gentilmente o valor em vez do presente físico, pois ainda não temos espaço para guardá-los. <br><br> Assim, quando for possível, poderemos adquirir cada item com a mesma alegria que vocês nos deram ao presentear. Agradecemos de coração pelo carinho e compreensão!</p>
+        </div>
+        <div class="body">
+            <div class="pesquisa">
+                <input id="search" type="text" v-model="termoBusca" placeholder="Buscar presente..." class="search-input">
+                <button id="btncriar" @click="CriarModalPresente">Criar Presente</button>
+            </div>
+            <div id="listapresentes" class="presentes">
+                <div v-for="presente in presentesFiltrados" :key="presente.id" class="presente-item">
+                    
+                    <h3>{{ presente.nome }}</h3>
+                    <p>{{ presente.descricao }}</p>
+                    <p class="price">Valor: R$ {{ presente.valor }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
