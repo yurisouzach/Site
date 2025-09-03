@@ -39,7 +39,7 @@
                 <div class="bodycp">
                     <div class="create">
                         <p class="lbl">Imagem</p>
-                        <input  @change="handleImageUpload" type="file" accept="image/*">
+                        <input  @change="handleImageUpload" type="file" accept="image/*" class="inpimg">
                         <p class="lbl">Nome</p>
                         <input v-model="novoPresente.nome" class="txt" placeholder="Nome do Presente">
                         <p class="lbl">Descrição</p>
@@ -49,12 +49,16 @@
                     </div>
                     <div class="preview">
                         <div v-if="novoPresente.nome || novoPresente.descricao || novoPresente.valor || imagemFile" class="preview-item">
-                            <img v-if="imagemFile" :src="imagemFile" alt="Preview" style="max-width: 100px; max-height: 100px;">
-                            <h4>{{ novoPresente.nome || "Nome do Presente" }}</h4>
-                            <p>{{ novoPresente.descricao || "Descrição do presente" }}</p>
-                            <p class="price">Valor: R$ {{ novoPresente.valor || "0,00" }}</p>
+                            <div class="presente-item">
+                                <img v-if="imagemFile" :src="imagemFile" alt="Preview" style="max-width: 100px; max-height: 100px;" class="image">
+                                <div class="presente-conteudo">
+                                    <h4 class="presente-nome">{{ novoPresente.nome || "Nome do Presente" }}</h4>
+                                    <p class="presente-descricao">{{ novoPresente.descricao || "Descrição do presente" }}</p>
+                                    <p class="presente-valor">Valor: R$ {{ novoPresente.valor || "0,00" }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <p v-else>Os dados do presente aparecerão aqui...</p>
+                        <p v-else style="color: #363319">Os dados do presente aparecerão aqui...</p>
                     </div>
                     <button id="adicionar" @click="adicionarPresente">Salvar Presente</button>
                 </div>

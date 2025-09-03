@@ -1,5 +1,5 @@
 .headder {
-    background-color: black;
+    background-color: #3e4b27;
     margin: 0;
     top: 0;
     left: 0;
@@ -19,6 +19,7 @@
 }
 .header h1, .header p {
     font-size: clamp(14px, 3vw, 24px);
+    color: #f1c8b2;
     white-space: normal;
     text-align: center;
     margin: 2px 0;
@@ -27,7 +28,7 @@
 
 .body {
     flex: 1;
-    background-color: brown;
+    background-color: #3e4b27;
     width: 70%;
     flex-direction: column;
     margin: 0 auto;
@@ -37,7 +38,7 @@
 }
 
 .pesquisa {
-    background-color: blueviolet;
+    background-color: #e9cca5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,17 +48,58 @@
     
 }
 
+#btncriar {
+    margin-right: 5px;
+}
+
 .presentes {
-    background-color: burlywood;
+    background-color: #e9cca5;
     height: 100%;
 }
 
 #titulo {
     padding-left: 10px;
+    color: #f1c8b2;
 }
 
 #texto {
     padding-left: 10px;
+    color: #f1c8b2;
+}
+
+button {
+    /* background-color:#97a777; */
+    background-color:#4a5d23;
+    /* color:#aa7a00; */
+    color: #f1c8b2;
+    padding: 10px;
+    text-align: center;;
+    line-height: 10px;
+    border:none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 150px;
+    height: 30px;
+    border: 1px solid #D4AF37;
+    font-family: "Cantata One", serif;
+    font-size: 15px;
+
+}
+    .botao:hover {
+        background-color:#5A7A1D;
+        transform: scale(1.02);
+    }
+
+#search {
+    background-color: #b5cc86;
+    /* color: #aa7a00; */
+    color: #320311;
+    border: none;
+    height: 20px;
+    width: 150px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-left: 5px;
 }
 
 html, body {
@@ -67,6 +109,7 @@ html, body {
 }
 
 body {
+    background-image: url("/Images/fundo_presentes.jpg");
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -82,10 +125,10 @@ body {
     gap: 5px 20px;
     align-items: start;
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #D4AF37;
     border-radius: 8px;
     margin-bottom: 15px;
-    background-color: white;
+    background-color: #e9cca5;
     height: 100px;
     min-height: 120px;
 }
@@ -118,7 +161,7 @@ body {
 .presente-valor {
     margin: 0;
     font-weight: bold;
-    color: #28a745;
+    color: #073d14;
     font-size: 16px;
 }
 
@@ -127,12 +170,10 @@ body {
     grid-row: 3;
     align-self: end;
     padding: 10px 20px;
-    background-color: #4a6cf7;
-    color: white;
-    border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    width: 200px;;
 }
 
 .image {
@@ -163,7 +204,7 @@ body {
 }
 
 .conteiner-geral {
-    background: white;
+    background: #e9cca5;
     border-radius: 8px;
     width: 800px;
     max-width: 90%;
@@ -172,6 +213,7 @@ body {
 
 .h1box {
     padding-left: 10px;
+    color: #f1c8b2;
 }
 
 .botaofechar {
@@ -182,7 +224,7 @@ body {
 }
 
 .titulo {
-    background-color: gray;
+    background-color: #3e4b27;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -196,14 +238,14 @@ body {
 .create {
     flex: 1;
     padding-left: 15px;
-    border-right: 1px solid gray;
+    border-right: 1px solid #3e4b27;
     flex-direction: column;
 }
 
 .preview {
     flex: 1;
     flex-direction: column;
-    border: 1px dashed #ddd;
+    border: 1px dashed #D4AF37;
     padding: 15px;
     border-radius: 8px;
     height: 100%;
@@ -214,6 +256,41 @@ body {
 .lbl {
     margin-top: 0px;
     padding-top: 15px;
+    color: #363319;
+}
+
+.inpimg {
+    color: #363319;
+    box-sizing: border-box;
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #b5cc86;
+    color: #320311;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #5f703b;
+}
+
+.txt {
+    background-color: #b5cc86;
+    /* color: #aa7a00; */
+    color: #320311;
+    border: none;
+    height: 20px;
+    width: 150px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-left: 5px;
 }
 
 #adicionar {
@@ -221,8 +298,6 @@ body {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #4a6cf7;
-    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
