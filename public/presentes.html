@@ -20,12 +20,46 @@
             </div>
             <div id="listapresentes" class="presentes">
                 <div v-for="presente in presentesFiltrados" :key="presente.id" class="presente-item">
-                    
-                    <h3>{{ presente.nome }}</h3>
-                    <p>{{ presente.descricao }}</p>
-                    <p class="price">Valor: R$ {{ presente.valor }}</p>
+                    <img v-if="presente.imagem" :src="presente.imagem" :alt="presente.nome" class="image">
+                    <div class="presente-conteudo">
+                        <h3 class="presente-nome">{{ presente.nome }}</h3>
+                        <p class="presente-descricao">{{ presente.descricao }}</p>
+                        <p class="presente-valor">Valor: R$ {{ presente.valor }}</p>
+                    </div>
+                    <button @click="selecionarPresente(presente)" class="btn-selecionar">Selecionar Presente</button>
                 </div>
             </div>
         </div>
+        <div v-if="mostrarModal" class="modal-overlay">
+            <div class="conteiner-geral">
+                <div class="titulo">
+                    <h1 class="h1box">Criar Presentes</h1>
+                    <button class="botaofechar" @click="mostrarModal = false">X</button>
+                </div>
+                <div class="bodycp">
+                    <div class="create">
+                        <p class="lbl">Imagem</p>
+                        <input  @change="handleImageUpload" type="file" accept="image/*">
+                        <p class="lbl">Nome</p>
+                        <input v-model="novoPresente.nome" class="txt" placeholder="Nome do Presente">
+                        <p class="lbl">Descrição</p>
+                        <input v-model="novoPresente.descricao" class="txt" placeholder="Descrição do Presente">
+                        <p class="lbl">Valor</p>
+                        <input v-model="novoPresente.valor" class="txt" id="valor" placeholder="Valor do Presente" type="number">
+                    </div>
+                    <div class="preview">
+                        <div v-if="novoPresente.nome || novoPresente.descricao || novoPresente.valor || imagemFile" class="preview-item">
+                            <img v-if="imagemFile" :src="imagemFile" alt="Preview" style="max-width: 100px; max-height: 100px;">
+                            <h4>{{ novoPresente.nome || "Nome do Presente" }}</h4>
+                            <p>{{ novoPresente.descricao || "Descrição do presente" }}</p>
+                            <p class="price">Valor: R$ {{ novoPresente.valor || "0,00" }}</p>
+                        </div>
+                        <p v-else>Os dados do presente aparecerão aqui...</p>
+                    </div>
+                    <button id="adicionar" @click="adicionarPresente">Salvar Presente</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
