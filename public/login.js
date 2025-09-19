@@ -9,7 +9,8 @@ const loginComponent = {
           senhaDev: "",
           nomeConv: null,
           api: window.axios.create({
-              baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+              //baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+              baseURL: 'http://localhost:3000/',
               timeout: 5000,
           })
       }
@@ -109,12 +110,13 @@ const loginComponent = {
         }
       } 
       else if (pTitulo === "INSIRA SEU NOME COMPLETO" && pPlaceholder === "Insira seu nome") {
-        //retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
-        //if (retorno) {
-        pSelf.fechar(novaDiv);
-          //pSelf.Router.push('/presentes');
-        pSelf.CriarModalManut();
-        //}
+        retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
+        if (retorno) {
+          pSelf.fechar(novaDiv);
+          localStorage.setItem('userRole', "convidado");
+          Router.push('/presentes');
+        //pSelf.CriarModalManut();
+        }
       }
       else if (pPlaceholder === "Insira seu nome para confirmar") {
         retorno = await pSelf.validarConvidado(pValor, novaDiv, true);

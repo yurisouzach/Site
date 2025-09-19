@@ -4,8 +4,8 @@ const presentesComponent = {
     template: document.getElementById("presentes-template").innerHTML,
     setup() {
         //controle de acesso
-         const userRole = ref(localStorage.getItem('userRole') || 'convidado');
-         const direito = computed(() => {
+         const userRole = ref(localStorage.getItem('userRole'));
+         const acessoDev = computed(() => {
             return userRole.value !== 'convidado';
         });
         //titulo
@@ -31,8 +31,8 @@ const presentesComponent = {
         });
 
          const api = window.axios.create({
-            baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
-            //baseURL: 'http://localhost:3000/',
+            //baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+            baseURL: 'http://localhost:3000/',
             timeout: 5000,
         });
 
@@ -213,7 +213,7 @@ const presentesComponent = {
             mostrarModalParte,
             mostrarModalTotal,
             userRole,
-            direito,
+            acessoDev,
             erros,
             salvando,
             valorDoacao,

@@ -114,6 +114,13 @@ html, body .corpo.tela-presentes {
   height: 100%;
 }
 
+.tela-presentes {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .corpo.tela-presentes {
     background-attachment: fixed;
     background-size: cover; 
@@ -278,20 +285,20 @@ html, body .corpo.tela-presentes {
     position: relative;
 }
 
-.corpo.tela-presentes .h1box {
+.corpo.tela-presentes .h1box-prsnt {
     padding-left: 10px;
     color: #f1c8b2;
     font-family: "Cantata One", serif;
 }
 
-.corpo.tela-presentes .botaofechar {
+.corpo.tela-presentes .botaofechar-prsnt {
     height: 30px;
     width: 30px;
     text-align: center;
     margin-right: 10px;
 }
 
-.corpo.tela-presentes .titulo {
+.corpo.tela-presentes .titulo-prsnt {
     background-color: #3e4b27;
     display: flex;
     justify-content: space-between;
@@ -349,7 +356,7 @@ html, body .corpo.tela-presentes {
     background-color: #5f703b;
 }
 
-.corpo.tela-presentes .txt {
+.corpo.tela-presentes .txt-prsnt {
     background-color: #b5cc86;
     /* color: #aa7a00; */
     color: #320311;

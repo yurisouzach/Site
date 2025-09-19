@@ -14,24 +14,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..')));
 app.use(cors());
 
+// const pool = new Pool({
+//   user: 'postgres',
+//   host: 'caboose.proxy.rlwy.net',
+//   database: 'railway',
+//   password: 'lripdNbNBjuqfsTWUqsONSNqHFlDqyzs',
+//   port: 39410,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
 const pool = new Pool({
   user: 'postgres',
-  host: 'caboose.proxy.rlwy.net',
-  database: 'railway',
-  password: 'lripdNbNBjuqfsTWUqsONSNqHFlDqyzs',
-  port: 39410,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  host: 'localhost',
+  database: 'Casamento',
+  password: '123',
+  port: 5432,
 });
-
-//const pool = new Pool({
-//  user: 'postgres',
-//  host: 'localhost',
-//  database: 'Casamento',
-//  password: '123',
-//  port: 5432,
-//});
 
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -198,7 +198,7 @@ app.post('/SalvarPresente', upload.single('imagem'), async (req, res) => {
     let valorParam = valor;
     let imagemPath = null;
     if (req.file) {
-      imagemPath = 'Images/presentes/' + req.file.filename;
+      imagemPath = 'public/Images/presentes/' + req.file.filename;
     }
 
     const insert = await pool.query(
