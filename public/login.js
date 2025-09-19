@@ -234,17 +234,19 @@ const loginComponent = {
         if (botaoConfirmar) {
           botaoConfirmar.addEventListener("click", async () => {
             fechar();
-            //await self.ConfirmarConvidado(pValor);
-            //self.Router.push('/presentes');
-            pSelf.CriarModalManut();
+            await self.ConfirmarConvidado(pValor);
+            localStorage.setItem('userRole', "convidado");
+            Router.push('/presentes');
+            //pSelf.CriarModalManut();
           });
         }
                 
         if (botaoCancelar) {
           botaoCancelar.addEventListener("click", () => {
             fechar();
-            pSelf.CriarModalManut();
-            //this.Router.push('/presentes');
+            localStorage.setItem('userRole', "convidado");
+            Router.push('/presentes');
+            //pSelf.CriarModalManut();
           });
         }
       }, 0);
@@ -304,10 +306,11 @@ const loginComponent = {
         const confirmar = async () => {
           if (input.value) {
             this.senhaDev = input.value;
-            //await this.salvarSenha(this.senhaDev);
+            await this.salvarSenha(this.senhaDev);
             fechar();
-            //this.Router.push('/presentes');
-            pSelf.CriarModalManut();
+            localStorage.setItem('userRole', "Noivo/Noiva");
+            Router.push('/presentes');
+            //pSelf.CriarModalManut();
           }
         };
                 
