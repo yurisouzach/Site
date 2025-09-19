@@ -306,7 +306,7 @@ const loginComponent = {
         const confirmar = async () => {
           if (input.value) {
             pSelf.senhaDev = input.value;
-            await pSelf.salvarSenha(pSelf.senhaDev);
+            await pSelf.SalvarSenha(pSelf.senhaDev);
             fechar();
             localStorage.setItem('userRole', "Noivo/Noiva");
             Router.push('/presentes');
