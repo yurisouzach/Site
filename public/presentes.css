@@ -1,4 +1,4 @@
-.corpo.tela-presentes .headder {
+.headder {
     background-color: #3e4b27;
     margin: 0;
     top: 0;
@@ -17,7 +17,7 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-.corpo.tela-presentes .header h1, .header p {
+.header h1, .header p {
     font-size: clamp(14px, 3vw, 24px);
     color: #f1c8b2;
     white-space: normal;
@@ -26,11 +26,7 @@
     width: 90%;
 }
 
-.corpo.tela-presentes p {
-    font-family: "Cantata One", serif;
-}
-
-.corpo.tela-presentes .body {
+.body {
     flex: 1;
     background-color: #3e4b27;
     width: 70%;
@@ -41,7 +37,7 @@
     overflow-y: auto;
 }
 
-.corpo.tela-presentes .pesquisa {
+.pesquisa {
     background-color: #e9cca5;
     display: flex;
     justify-content: space-between;
@@ -52,28 +48,26 @@
     
 }
 
-.corpo.tela-presentes #btncriar {
+#btncriar {
     margin-right: 5px;
 }
 
-.corpo.tela-presentes .presentes {
+.presentes {
     background-color: #e9cca5;
     height: 100%;
 }
 
-.corpo.tela-presentes #titulo {
+#titulo {
     padding-left: 10px;
     color: #f1c8b2;
-    font-family: "Petit Formal Script", cursive;
 }
 
-.corpo.tela-presentes #texto {
+#texto {
     padding-left: 10px;
     color: #f1c8b2;
-    font-family: "Cantata One", serif;
 }
 
-.corpo.tela-presentes button {
+button {
     /* background-color:#97a777; */
     background-color:#4a5d23;
     /* color:#aa7a00; */
@@ -84,19 +78,19 @@
     border:none;
     border-radius: 6px;
     cursor: pointer;
-    width: 170px;
+    width: 150px;
     height: 30px;
     border: 1px solid #D4AF37;
     font-family: "Cantata One", serif;
     font-size: 15px;
 
 }
-    .corpo.tela-presentes .botao:hover {
+    .botao:hover {
         background-color:#5A7A1D;
         transform: scale(1.02);
     }
 
-.corpo.tela-presentes #search {
+#search {
     background-color: #b5cc86;
     /* color: #aa7a00; */
     color: #320311;
@@ -108,17 +102,14 @@
     margin-left: 5px;
 }
 
-html, body .corpo.tela-presentes {
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-.corpo.tela-presentes {
-    background-attachment: fixed;
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-image: url("./Images/fundo_presentes.jpg");
+body {
+    background-image: url("/Images/fundo_presentes.jpg");
     margin: 0px;
     display: flex;
     flex-direction: column;
@@ -127,7 +118,7 @@ html, body .corpo.tela-presentes {
     height: 100%;
 }
 
-.corpo.tela-presentes .presente-item {
+.presente-item {
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto auto;
@@ -142,50 +133,7 @@ html, body .corpo.tela-presentes {
     min-height: 120px;
 }
 
-.corpo.tela-presentes .presente-item.selecionado {
-    opacity: 0.7;
-    background-color: #d4c4ae;
-    position: relative;
-}
-
-.corpo.tela-presentes .presente-item.selecionado::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.1) 50%, transparent 60%);
-    pointer-events: none;
-}
-
-.corpo.tela-presentes .presente-item.selecionado .presente-nome,
-.corpo.tela-presentes .presente-item.selecionado .presente-descricao,
-.corpo.tela-presentes .presente-item.selecionado .presente-valor {
-    text-decoration: line-through;
-    color: #888 !important;
-}
-
-.corpo.tela-presentes .presente-item.selecionado .image {
-    filter: grayscale(100%);
-}
-
-.corpo.tela-presentes .presente-item.selecionado::after {
-    content: "Presente Esgotado";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-5deg);
-    background-color: rgba(74, 93, 35, 0.9);
-    color: #f1c8b2;
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 16px;
-    z-index: 10;
-}
-
-.corpo.tela-presentes .presente-conteudo {
+.presente-conteudo {
     grid-column: 2;
     grid-row: 1 / span 3;
     display: flex;
@@ -195,32 +143,29 @@ html, body .corpo.tela-presentes {
     gap: 8px;
 }
 
-.corpo.tela-presentes .presente-nome {
+.presente-nome {
     margin: 0;
     font-size: 18px;
     font-weight: bold;
-    font-family: "Petit Formal Script", cursive;
 }
 
-.corpo.tela-presentes .presente-descricao {
+.presente-descricao {
     margin: 5px 0;
     color: #666;
     flex: 1;
     display: flex;
     align-items: center;
     min-height: 40px;
-    font-family: "Cantata One", serif;
 }
 
-.corpo.tela-presentes .presente-valor {
+.presente-valor {
     margin: 0;
     font-weight: bold;
     color: #073d14;
     font-size: 16px;
-    font-family: "Cantata One", serif;
 }
 
-.corpo.tela-presentes .btn-selecionar {
+.btn-selecionar {
     grid-column: 3;
     grid-row: 3;
     align-self: end;
@@ -231,7 +176,7 @@ html, body .corpo.tela-presentes {
     width: 200px;;
 }
 
-.corpo.tela-presentes .image {
+.image {
     grid-column: 1;
     grid-row: 1 / span 3;
     width: 120px;
@@ -241,19 +186,7 @@ html, body .corpo.tela-presentes {
     align-self: center;
 }
 
-.corpo.tela-presentes .erro {
-  color: #ff4444;
-  font-size: 12px;
-  display: block;
-  margin-top: 4px;
-}
-
-.corpo.tela-presentes button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.corpo.tela-presentes .modal-overlay {
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -266,11 +199,11 @@ html, body .corpo.tela-presentes {
     z-index: 1000;
 }
 
-.corpo.tela-presentes .form-container {
+.form-container {
     flex: 1;
 }
 
-.corpo.tela-presentes .conteiner-geral {
+.conteiner-geral {
     background: #e9cca5;
     border-radius: 8px;
     width: 800px;
@@ -278,39 +211,38 @@ html, body .corpo.tela-presentes {
     position: relative;
 }
 
-.corpo.tela-presentes .h1box {
+.h1box {
     padding-left: 10px;
     color: #f1c8b2;
-    font-family: "Cantata One", serif;
 }
 
-.corpo.tela-presentes .botaofechar {
+.botaofechar {
     height: 30px;
     width: 30px;
     text-align: center;
     margin-right: 10px;
 }
 
-.corpo.tela-presentes .titulo {
+.titulo {
     background-color: #3e4b27;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.corpo.tela-presentes .bodycp {
+.bodycp {
     display: flex;
     gap: 20px;
 }
 
-.corpo.tela-presentes .create {
+.create {
     flex: 1;
     padding-left: 15px;
     border-right: 1px solid #3e4b27;
     flex-direction: column;
 }
 
-.corpo.tela-presentes .preview {
+.preview {
     flex: 1;
     flex-direction: column;
     border: 1px dashed #D4AF37;
@@ -321,13 +253,13 @@ html, body .corpo.tela-presentes {
     margin-right: 30px;
 }
 
-.corpo.tela-presentes .lbl {
+.lbl {
     margin-top: 0px;
     padding-top: 15px;
     color: #363319;
 }
 
-.corpo.tela-presentes .inpimg {
+.inpimg {
     color: #363319;
     box-sizing: border-box;
     overflow: visible;
@@ -335,7 +267,7 @@ html, body .corpo.tela-presentes {
     text-overflow: ellipsis;
 }
 
-.corpo.tela-presentes input[type="file"]::file-selector-button {
+input[type="file"]::file-selector-button {
     background-color: #b5cc86;
     color: #320311;
     border: none;
@@ -345,11 +277,11 @@ html, body .corpo.tela-presentes {
     cursor: pointer;
 }
 
-.corpo.tela-presentes input[type="file"]::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover {
     background-color: #5f703b;
 }
 
-.corpo.tela-presentes .txt {
+.txt {
     background-color: #b5cc86;
     /* color: #aa7a00; */
     color: #320311;
@@ -361,7 +293,7 @@ html, body .corpo.tela-presentes {
     margin-left: 5px;
 }
 
-.corpo.tela-presentes #adicionar {
+#adicionar {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -371,58 +303,6 @@ html, body .corpo.tela-presentes {
     cursor: pointer;
 }
 
-.corpo.tela-presentes #valor {
+#valor {
     margin-bottom: 15px;
-}
-
-.corpo.tela-presentes .conteudo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background: #e9cca5;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.corpo.tela-presentes .botoes {
-    padding-top: 18px;
-    padding-bottom: 18px;
-}
-
-.corpo.tela-presentes #slc {
-    margin: 0 auto;
-}
-
-.corpo.tela-presentes .btn-repensar {
-    margin-left: 10px;
-}
-
-.corpo.tela-presentes .btn-parte {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.corpo.tela-presentes .btn-total {
-    margin-right: 10px;
-}
-
-.corpo.tela-presentes .btn-confirmar {
-    margin-right: 0px;
-    margin-top: 18px;
-    margin-bottom: 18px;
-}
-
-.corpo.tela-presentes #valordoacao {
-    margin-top: 18px;
-    margin-bottom: 18px;
-}
-
-.corpo.tela-presentes .btn-feito {
-    margin-top: 18px;
-    margin-bottom: 18px;
-}
-
-.corpo.tela-presentes #texto-else {
-    color: #363319;
 }

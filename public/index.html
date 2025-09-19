@@ -1,146 +1,26 @@
 <!DOCTYPE html>
 <head class='cabecalho'>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="login.css" id="css-atual">
-    <link rel="stylesheet" href="presentes.css">
+    <link rel="stylesheet" href="login.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cantata+One&family=Charmonman:wght@400;700&family=Diphylleia&family=Petit+Formal+Script&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@4.1.6/dist/vue-router.global.js"></script>
 </head>
 <body class="corpo">
-    <div id="app"></div>
-
-    <template id="login-template">
-        <div class="contcab">
-            <h1 class="titulocab">Bem vindo ao casamento de Yuri e Eduarda</h1>
+    <div id="app">
+        <!-- <div class="contcab">
+            <h1 class="titulocab">BEM VINDO AO CASAMENTO DE YURI E EDUARDA</h1>
         </div>
-            <div class="container">
-                <h1 id="h1b">LISTA DE PRESENTES</h1>
-                <button class="botao" id="bb1" @click="abrirModalAdmin">Entrar como Noivo/Noiva</button>
-                <button class="botao" id="bb2" @click="abrirModalConvidado">Entrar como Convidado</button>
-                <h1 id="h1b">CONFIRMAR PRESENÇA</h1>
-                <button class="botao" id="bb3" @click="abrirModalConfirmacao">Confirmar Presença</button>
-            </div>
-        </div>
-    </template>
+        <div class="container">
+            <h1 id="h1b">LISTA DE PRESENTES</h1>
+            <button class="botao" id="bb1" @click="abrirModalAdmin">Entrar como Noivo/Noiva</button>
+            <button class="botao" id="bb2" @click="abrirModalConvidado">Entrar como Convidado</button>
+            <h1 id="h1b">CONFIRMAR PRESENÇA</h1>
+            <button class="botao" id="bb3" @click="abrirModalConfirmacao">Confirmar Presença</button>
+        </div> -->
+    </div>
 
-     <template id="presentes-template">
-        <body>
-            <div id="app">
-                <div class="headder">
-                    <h1 id="titulo">{{ titulo }}</h1>
-                    <p id="texto">Nesta página, você encontrará uma lista dos presentes que escolhemos com muito carinho. Como estamos em um momento especial de organização, pedimos gentilmente o valor em vez do presente físico, pois ainda não temos espaço para guardá-los. <br><br> Assim, quando for possível, poderemos adquirir cada item com a mesma alegria que vocês nos deram ao presentear. Agradecemos de coração pelo carinho e compreensão!</p>
-                </div>
-                <div class="body">
-                <div class="pesquisa">
-                    <input id="search" type="text" v-model="termoBusca" placeholder="Buscar presente..." class="search-input">
-                    <button id="btncriar" @click="CriarModalPresente">Criar Presente</button>
-                </div>
-                <div id="listapresentes" class="presentes">
-                    <div v-for="presente in presentesFiltrados" :key="presente.id" class="presente-item" :class='{ "selecionado": presente.ValorPresente === "0" }'>
-                        <img v-if="presente.Imagem" :src="'./' + presente.Imagem" :alt="presente.NomePresente" class="image">
-                        <div class="presente-conteudo">
-                            <h3 class="presente-nome">{{ presente.NomePresente }}</h3>
-                            <p class="presente-descricao">{{ presente.DescPresente }}</p>
-                            <p class="presente-valor">Valor: R$ {{ presente.ValorPresente }}</p>
-                        </div>
-                        <!-- <p v-if="direito" class="desenv">{{ presente.Convidados }}</p>
-                        <p v-if="direito" class="desenv"> {{ presente.Valores}} </p> -->
-                        <button v-if='presente.ValorPresente !== "0"' @click="selecionarPresente(presente)" class="btn-selecionar">Selecionar Presente</button>
-                    </div>
-                </div>
-            </div>
-            <div v-if="mostrarModalCriar" class="modal-overlay">
-                <div class="conteiner-geral">
-                    <div class="titulo">
-                        <h1 class="h1box">Criar Presentes</h1>
-                        <button class="botaofechar" @click="mostrarModalCriar = false">X</button>
-                    </div>
-                    <div class="bodycp">
-                        <div class="create">
-                            <p class="lbl">Imagem</p>
-                            <input  @change="handleImageUpload" type="file" accept="image/*" class="inpimg">
-                            <p class="lbl">Nome</p>
-                            <input v-model="novoPresente.nome" class="txt" placeholder="Nome do Presente">
-                            <span v-if="erros.nome" class="erro">{{ erros.nome }}</span>
-                            <p class="lbl">Descrição</p>
-                            <input v-model="novoPresente.descricao" class="txt" placeholder="Descrição do Presente">
-                            <p class="lbl">Valor</p>
-                            <input v-model="novoPresente.valor" class="txt" id="valor" placeholder="Valor do Presente" type="number">
-                            <span v-if="erros.valor" class="erro">{{ erros.valor }}</span>
-                        </div>
-                        <div class="preview">
-                            <div v-if="novoPresente.nome || novoPresente.descricao || novoPresente.valor || imagemFile" class="preview-item">
-                                <div class="presente-item">
-                                    <img v-if="imagemFile" :src="imagemFile" alt="Preview" class="image">
-                                    <div class="presente-conteudo">
-                                        <h4 class="presente-nome">{{ novoPresente.nome || "Nome do Presente" }}</h4>
-                                        <p class="presente-descricao">{{ novoPresente.descricao || "Descrição do presente" }}</p>
-                                        <p class="presente-valor">Valor: R$ {{ novoPresente.valor || "0,00" }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p v-else id="texto-else">Os dados do presente aparecerão aqui...</p>
-                        </div>
-                        <button id="adicionar" @click="adicionarPresente" :disabled="salvando"> {{ salvando ? 'Salvando...' : 'Salvar Presente' }}</button>
-                    </div>
-                </div>
-            </div>
-            <div v-if="mostrarModalSelecionado" class="modal-overlay">
-                <div class="conteiner-geral">
-                    <div class="titulo">
-                        <h1 class="h1box" id="slc">Olá!</h1>
-                        <button class="botaofechar" @click="mostrarModalSelecionado = false">X</button>
-                    </div>
-                    <div class="conteudo">
-                        <p>Ficamos felize com sua generosidade e apoio para nossas futuras conquistas!</p>
-                        <p>Agora me diga, você vai:</p>
-                        <div class="botoes">
-                            <button class="btn-repensar" @click="mostrarModalSelecionado = false"> Vou repensar</button>
-                            <button class="btn-parte" @click="darParte">Dar parte do valor</button>
-                            <button class="btn-total" @click="total">Dar o valor total</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-if="mostrarModalParte" class="modal-overlay">
-                <div class="conteiner-geral">
-                    <div class="titulo">
-                        <h1 class="h1box" id="slc">Certo!</h1>
-                        <button class="botaofechar" @click="mostrarModalParte = false">X</button>
-                    </div>
-                    <div class="conteudo" id="parte">
-                        <p>agora me diga, quanto tem em mente?</p>
-                        <input type="number" class="txt" id="valordoacao" placeholder="Digite o valor" v-model="valorDoacao">
-                        <span v-if="erros.Valor" class="erro">{{ erros.Valor }}</span>
-                        <button class="btn-confirmar" @click="total">Confirmar</button>
-                    </div>
-                </div>
-            </div>
-            <div v-if="mostrarModalTotal" class="modal-overlay">
-                <div class="conteiner-geral">
-                    <div class="titulo">
-                        <h1 class="h1box" id="slc">Muito obrigado!</h1>
-                        <button class="botaofechar" @click="mostrarModalTotal = false">X</button>
-                    </div>
-                        <div class="conteudo" id="total">
-                            <p>agora estamos um passo mais proximo do nosso sonho, abaixo o QRcode caso queira nos dar agora o presente</p>
-                            <img src="" class="QRcode">
-                            <p>ou então guarde nossa chave: {chave pix} para pagamentos posteriores</p>
-                            <button class="btn-feito" @click="mostrarModalTotal = false">Feito!</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </body>
-     </template>
-
-    <script type="module" src="app.js"></script>
+    <!-- <script type="module" src="router.js"></script> -->
     <script type="module" src="login.js"></script>
-    <script type="module" src="presentes.js"></script>
-    <script type="module" src="router.js"></script>
 </body>
 
