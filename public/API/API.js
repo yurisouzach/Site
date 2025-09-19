@@ -171,29 +171,49 @@ app.get('/ObterPresentes', async (req, res) => {
   }
 })
 
-const multer = require('multer');
-const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '..', 'Images', 'presentes');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+// Configurar Cloudinary
+cloudinary.config({
+  cloud_name: "dzektgzce",
+  api_key: "494555796364749",
+  api_secret: "s-5ee1br-QLccyEpik_VnzzelmM"
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'casamento_presentes',
+    format: async (req, file) => 'png', // ou jpg, webp
+    public_id: (req, file) => {
+      return Date.now() + '-' + Math.round(Math.random() * 1E9);
     }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
-    cb(null, uniqueName);
   }
 });
 
-const upload = multer({ 
-  storage: storage,
-  limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB
-  }
-});
+const upload = multer({ storage: storage });
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     const uploadDir = path.join(__dirname, '..', 'Images', 'presentes');
+//     if (!fs.existsSync(uploadDir)) {
+//       fs.mkdirSync(uploadDir, { recursive: true });
+//     }
+//     cb(null, uploadDir);
+//   },
+//   filename: function (req, file, cb) {
+//     const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
+//     cb(null, uniqueName);
+//   }
+// });
+
+// const upload = multer({ 
+//   storage: storage,
+//   limits: {
+//     fileSize: 5 * 1024 * 1024 // 5MB
+//   }
+// });
 
 app.post('/SalvarPresente', upload.single('imagem'), async (req, res) => {
   try {
@@ -202,8 +222,9 @@ app.post('/SalvarPresente', upload.single('imagem'), async (req, res) => {
     let descParam = descricao;
     let valorParam = valor;
     let imagemPath = null;
+
     if (req.file) {
-      imagemPath = 'public/Images/presentes/' + req.file.filename;
+      imagemPath = req.file.path; 
     }
 
     const insert = await pool.query(
