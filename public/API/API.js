@@ -94,9 +94,12 @@ app.get('/dadosDev', async (req, res) => {
 });
 
 app.put('/SalvarSenha', async (req, res) => {
+  const { senha } = req.query;
+  let queryresult = ""
   try {
-    const { senha } = req.query;
+    queryresult = "vai salvar agora";
     const result = await pool.query('INSERT INTO public.senhadev(senha) VALUES ($1)', [senha]);
+    queryresult = result;
     res.json({
       sucesso: true,
       hasData: result.rows.length > 0,
@@ -108,7 +111,9 @@ app.put('/SalvarSenha', async (req, res) => {
   catch (e) {
     res.status(500).json({
         sucesso: false,
-        error: e.message
+        error: e.message,
+        senha: senha,
+        log: queryresult
       });
     console.log(e);
   }
@@ -145,7 +150,7 @@ app.listen(PORT, () => {
 app.get('/ObterPresentes', async (req, res) => {
   try {
     const consulta = await pool.query(`
-      SELECT * FROM public."Presentes" 
+      SELECT * FROM public.presentes
       ORDER BY 
         CASE WHEN "ValorPresente" = 0 THEN 1 ELSE 0 END,
         "ValorPresente" ASC,
@@ -202,7 +207,7 @@ app.post('/SalvarPresente', upload.single('imagem'), async (req, res) => {
     }
 
     const insert = await pool.query(
-      `INSERT INTO public."Presentes" 
+      `INSERT INTO public.presentes
        ("NomePresente", "DescPresente", "ValorPresente", "Imagem") 
        VALUES ($1, $2, $3, $4) RETURNING *`, 
       [nome, descricao, parseFloat(valor), imagemPath]
@@ -234,7 +239,7 @@ app.put('/DoarParte', async (req, res) => {
     let { valordoado, usuario, cdPresente } = req.query;
     const presenteValor = await pool.query(
       `SELECT "ValorPresente", "NomeConv"
-       FROM public."Presentes" 
+       FROM public.presentes
        WHERE "cdPresente" = $1`,
       [cdPresente]
     );
@@ -250,7 +255,7 @@ app.put('/DoarParte', async (req, res) => {
     teste = novoUsuario !== null ? novoUsuario : usuario;
 
     const updateResult = await pool.query(
-      `UPDATE public."Presentes" 
+      `UPDATE public.presentes
        SET "ValorPresente" = $1, 
            "NomeConv" = $2
        WHERE "cdPresente" = $3 
@@ -291,7 +296,7 @@ app.put('/DoarTotal', async (req, res) => {
 
     const presenteValor = await pool.query(
       `SELECT "NomeConv"
-       FROM public."Presentes" 
+       FROM public.presentes
        WHERE "cdPresente" = $1`,
       [cdPresente]
     );
@@ -303,7 +308,7 @@ app.put('/DoarTotal', async (req, res) => {
     }
 
     const updateResult = await pool.query(
-      `UPDATE public."Presentes" 
+      `UPDATE public.presentes
        SET "ValorPresente" = 0, 
            "NomeConv" = $1
        WHERE "cdPresente" = $2 

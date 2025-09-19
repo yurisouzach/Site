@@ -347,7 +347,7 @@ const loginComponent = {
 
     async SalvarSenha(pSenha) {
       try {
-        const response = await api.post('/salvarSenha', null, { params: { senha: pSenha } });
+        const response = await api.post('/SalvarSenha', null, { params: { senha: pSenha } });
         console.log(response);
         if (response.data.sucesso){
           return true;
