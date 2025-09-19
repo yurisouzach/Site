@@ -37,7 +37,7 @@
                 </div>
                 <div id="listapresentes" class="presentes">
                     <div v-for="presente in presentesFiltrados" :key="presente.id" class="presente-item" :class='{ "selecionado": presente.ValorPresente === "0" }'>
-                        <img v-if="presente.Imagem" :src="'./' + presente.Imagem" :alt="presente.NomePresente" class="image">
+                        <img v-if="presente.Imagem" :src="presente.Imagem" :alt="presente.NomePresente" class="image">
                         <div class="presente-conteudo">
                             <h3 class="presente-nome">{{ presente.NomePresente }}</h3>
                             <p class="presente-descricao">{{ presente.DescPresente }}</p>
