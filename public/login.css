@@ -1,16 +1,16 @@
-.cabecalho {
+.corpo.tela-login .cabecalho {
     padding: 0px;
     margin: 0px;
 }
 
-.contcab {
+.corpo.tela-login .contcab {
     background-color: #3e4b27;
     padding-top: 20px;
     height: 20px;
     width: 100%;
 }
 
-.titulocab {
+.corpo.tela-login .titulocab {
     font-style: inherit;
     color: 	#f1c8b2;
     margin: 0px;
@@ -24,7 +24,7 @@
     font-size: 30px;
 }
 
-h1 {
+.corpo.tela-login h1 {
     /* color:  lightgray; */
     color: #320311;
     font-family: "Cantata One", serif;
@@ -32,23 +32,23 @@ h1 {
 
 }
 
-.cancelar {
+.corpo.tela-login .cancelar {
     font-family: "Cantata One", serif;
 }
 
-.confirmar {
+.corpo.tela-login .confirmar {
     font-family: "Cantata One", serif;
 }
 
-.ok {
+.corpo.tela-login .ok {
     font-family: "Cantata One", serif;
 }
 
-#bb2 {
+.corpo.tela-login #bb2 {
     margin-top: 50px;
 }
 
-button {
+.corpo.tela-login button {
     /* background-color:#97a777; */
     background-color:#4a5d23;
     /* color:#aa7a00; */
@@ -68,12 +68,12 @@ button {
     font-size: 30px;
 
 }
-    .botao:hover {
+    .corpo.tela-login .botao:hover {
         background-color:#5A7A1D;
         transform: scale(1.02);
     }
 
-#h1b {
+.corpo.tela-login #h1b {
     width: 100%;
     justify-content: center;
     display: flex;
@@ -82,7 +82,7 @@ button {
     font-weight: 700;
 }
 
-.h1box {
+.corpo.tela-login .h1box {
     color: #f1c8b2;
     justify-content: unset;
     position: absolute;
@@ -93,7 +93,7 @@ button {
     /* font-family: 'Montserrat', sans-serif; */
 }
 
-.titulo {
+.corpo.tela-login .titulo {
     background-color: #4a5d23;
     color: #f1c8b2;
     padding-bottom: 20px;
@@ -103,7 +103,7 @@ button {
     top: -10px;
 }
 
-.txtSenha {
+.corpo.tela-login .txtSenha {
     background-color: #b5cc86;
     /* color: #aa7a00; */
     color: #320311;
@@ -114,7 +114,7 @@ button {
     border-radius: 2px;
 }
 
-#confirmar {
+.corpo.tela-login #confirmar {
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -124,7 +124,7 @@ button {
     font-size: 25px;
 }
 
-.botaofechar {
+.corpo.tela-login .botaofechar {
     position: absolute;
     right: 10px;
     top: -5px;
@@ -134,7 +134,7 @@ button {
     font-family: sans-serif;
 }
 
-.texto {
+.corpo.tela-login .texto {
     /* color:  #4a5d23; */
     color: #4A3A2A;
     width: 100%;
@@ -144,7 +144,7 @@ button {
     font-family: "Cantata One", serif;
 }
 
-.containersenha {
+.corpo.tela-login .containersenha {
     /* background-color: #cfb28c; */
     background-color:#e9cca5;
     width: 800px;
@@ -161,11 +161,11 @@ button {
     border-radius: 10px;
 }
 
-.invalido {
+.corpo.tela-login .invalido {
     display: none;
 }
 
-.invalido.mostrar {
+.corpo.tela-login .invalido.mostrar {
     color: rgb(194, 79, 41);
     display: block;
     position: absolute;
@@ -173,7 +173,7 @@ button {
     transform: translateX(-50%);
 }
 
-.container {
+.corpo.tela-login .container {
     /* background-color: #4a5d23e8; */
     background-color: #5b7133de;
     width: 75%;
@@ -192,7 +192,7 @@ button {
     font-family: "Lugrasimo", cursive;
 }
 
-body, html {
+body, html .corpo.tela-login {
     overflow: hidden;
     min-width: 320px;
     margin: 0;
@@ -200,7 +200,7 @@ body, html {
     height: 100%;
 }
 
-.corpo {
+.corpo.tela-login{
     background-image: url("Images/fundo_mobiles.jpg");
     background-size: 2000px;
     background-repeat: no-repeat;
@@ -209,86 +209,79 @@ body, html {
 }
 
 @media (max-height: 2242px) {
-    body {
+    .corpo.tela-login {
         background-image: url('Images/fundo5.jpg')!important;
         background-size: 2000px !important;
         background-position-x: -600px;
         background-position-y: -200px;
     }
-    .container {
+    .corpo.tela-login .container {
         top: 60%;
         width: 75%;
     }
-    #h1b {
+    .corpo.tela-login #h1b {
         font-size: 50px;
     }
-    button {
+    .corpo.tela-login button {
         width: 500px;
         height: 80px;
         font-size: 35px;
     }
-    .txtSenha {
+    .corpo.tela-login .txtSenha {
         height: 40px;
         font-size: 25px;
     }
 }
 @media (max-height: 1773px) {
-    body {
+    .corpo.tela-login {
         background-image: url('Images/fundo5.jpg')!important;
         background-size: 1400px !important;
         background-position-x: -200px !important;
         background-position-y: -0px !important;
     }
-    .container {
+    .corpo.tela-login .container {
         width: 60%;
     }
-    #h1b {
+    .corpo.tela-login #h1b {
         font-size: 40px;
     }
-    button {
+    .corpo.tela-login button {
         width: 400px;
         height: 60px;
         font-size: 25px;
     }
-    .txtSenha {
+    .corpo.tela-login .txtSenha {
         height: 40px;
         font-size: 20px;
     }
 }
 @media (max-height: 1080px) {
-  body {
+  .corpo.tela-login {
     background-image: url('Images/fundo.jpg')!important;
     background-size: cover !important;
     background-position-x: -0px !important;
     background-position-y: -100px !important;
   }
-  .container {
+  .corpo.tela-login .container {
     width: 50%;
     top: 65%
   }
-  #h1b {
+  .corpo.tela-login #h1b {
     font-size: 30px;
   }
-  button {
+  .corpo.tela-login button {
     width: 300px;
     height: 40px;
     font-size: 20px;
   }
-  .containersenha {
+  .corpo.tela-login .containersenha {
     height: 200px;
   }
 }
 @media (max-height: 858px) and (min-width: 1440px) {
-    body {
+    .corpo.tela-login {
     background-image: url('Images/fundo.jpg')!important;
     background-size: cover !important;
     background-position-y: -80px !important;
   }
 }
-
-
-
-
-
-
-

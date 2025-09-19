@@ -1,8 +1,7 @@
 "use strict";
 const { createApp } = Vue;
-//import { createApp } from 'vue';
-//const port = process.env.PORT || 3000;
-//import Router from './router.js'
+import Router from './router.js';
+import App from './app.js';
 
 const loginComponent = {
   data() {
@@ -11,22 +10,12 @@ const loginComponent = {
           nomeConv: null,
           api: window.axios.create({
               baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+              //baseURL: 'http://localhost:3000/',
               timeout: 5000,
           })
       }
   },
-  template: `
-    <div class="contcab">
-            <h1 class="titulocab">Bem vindo ao casamento de Yuri e Eduarda</h1>
-        </div>
-        <div class="container">
-            <h1 id="h1b">LISTA DE PRESENTES</h1>
-            <button class="botao" id="bb1" @click="abrirModalAdmin">Entrar como Noivo/Noiva</button>
-            <button class="botao" id="bb2" @click="abrirModalConvidado">Entrar como Convidado</button>
-            <h1 id="h1b">CONFIRMAR PRESENÇA</h1>
-            <button class="botao" id="bb3" @click="abrirModalConfirmacao">Confirmar Presença</button>
-        </div>
-  `,
+  template: document.getElementById("login-template").innerHTML,
   methods: {
     abrirModalAdmin() {
       this.criarModal("INSIRA A SENHA", "Insira a senha de desenvolvedor", "Senha incorreta.");
@@ -111,24 +100,27 @@ const loginComponent = {
       let retorno;
             
       if (pTitulo === "INSIRA A SENHA") {
-        //retorno = await pSelf.validarSenha(pValor, novaDiv, pSelf);
-        //if (retorno) {
+        retorno = await pSelf.validarSenha(pValor, novaDiv, pSelf);
+        if (retorno) {
         pSelf.fechar(novaDiv);
-          //pSelf.Router.push('/presentes');
-        pSelf.CriarModalManut();
-        //}
+        localStorage.setItem('userRole', "Noivo/Noiva");
+        Router.push('/presentes');
+        //pSelf.CriarModalManut();
+        }
       } 
       else if (pTitulo === "INSIRA SEU NOME COMPLETO" && pPlaceholder === "Insira seu nome") {
-        //retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
-        //if (retorno) {
+        retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
+        if (retorno) {
         pSelf.fechar(novaDiv);
-          //pSelf.Router.push('/presentes');
-        pSelf.CriarModalManut();
-        //}
+        localStorage.setItem('userRole', "convidado");
+        localStorage.setItem('userName', pSelf.nomeConv.Nome);
+        Router.push('/presentes');
+        //pSelf.CriarModalManut();
+        }
       }
       else if (pPlaceholder === "Insira seu nome para confirmar") {
         retorno = await pSelf.validarConvidado(pValor, novaDiv, true);
-        if (retorno && !pSelf.nomeConv.confirmado) {
+        if (retorno && pSelf.nomeConv != null && !pSelf.nomeConv.confirmado) {
           const confirmado = await pSelf.validarConfirmacao(pValor, novaDiv, pSelf);
           if (confirmado) {
             pSelf.mostrarMensagemSucesso("Convidado confirmado com sucesso!");
@@ -139,7 +131,7 @@ const loginComponent = {
         }
       }
 
-      if (!retorno) {
+      if (!retorno || pSelf.nomeConv == null) {
         pSelf.mostrarErro(novaDiv);
       }
     },
@@ -404,9 +396,6 @@ const loginComponent = {
 }
 
 export default loginComponent;
-
-const app = Vue.createApp(loginComponent);
-app.mount('#app');
 
 
 
