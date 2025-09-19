@@ -14,24 +14,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..')));
 app.use(cors());
 
+const pool = new Pool({
+    user: 'postgres',
+    host: 'caboose.proxy.rlwy.net',
+    database: 'railway',
+    password: 'lripdNbNBjuqfsTWUqsONSNqHFlDqyzs',
+    port: 39410,
+    ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 // const pool = new Pool({
 //   user: 'postgres',
-//   host: 'caboose.proxy.rlwy.net',
-//   database: 'railway',
-//   password: 'lripdNbNBjuqfsTWUqsONSNqHFlDqyzs',
-//   port: 39410,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
+//   host: 'localhost',
+//   database: 'Casamento',
+//   password: '123',
+//   port: 5432,
 // });
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'Casamento',
-  password: '123',
-  port: 5432,
-});
 
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {

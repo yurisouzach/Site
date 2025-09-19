@@ -31,8 +31,8 @@ const presentesComponent = {
         });
 
          const api = window.axios.create({
-            //baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
-            baseURL: 'http://localhost:3000/',
+            baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+            //baseURL: 'http://localhost:3000/',
             timeout: 5000,
         });
 
