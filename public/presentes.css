@@ -31,7 +31,6 @@
 }
 
 .corpo.tela-presentes .body {
-    height: calc(100vh - 150px);
     flex: 1;
     background-color: #3e4b27;
     width: 70%;
@@ -58,7 +57,6 @@
 }
 
 .corpo.tela-presentes .presentes {
-    background-color: #e9cca5;
     height: 100%;
 }
 
