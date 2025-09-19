@@ -93,7 +93,7 @@ app.get('/dadosDev', async (req, res) => {
     } 
 });
 
-app.put('/SalvarSenha', async (req, res) => {
+app.post('/SalvarSenha', async (req, res) => {
   const { senha } = req.query;
   let queryresult = ""
   try {
