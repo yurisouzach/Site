@@ -31,6 +31,7 @@
 }
 
 .corpo.tela-presentes .body {
+    height: calc(100vh - 150px);
     flex: 1;
     background-color: #3e4b27;
     width: 70%;
@@ -108,15 +109,9 @@
     margin-left: 5px;
 }
 
-html, body .corpo.tela-presentes {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 .tela-presentes {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }
