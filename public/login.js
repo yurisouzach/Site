@@ -265,16 +265,16 @@ const loginComponent = {
       return primeiroNome + " " + inicialSobrenome;
     },
 
-    async validarSenha(pValor, pElemento) {
+    async validarSenha(pValor, pElemento, pSelf) {
       this.senhaDev = await this.buscarDadosDev();
             
       if (this.senhaDev === null) {
-        this.mostrarDialogoSenha(pElemento);
+        this.mostrarDialogoSenha(pElemento, pSelf);
       }
       return this.senhaDev === pValor;
     },
 
-    mostrarDialogoSenha(pElemento) {
+    mostrarDialogoSenha(pElemento, pSelf) {
       this.fechar(pElemento);
       const divNovaSenha = document.createElement('div');
       divNovaSenha.id = "novasenha";
@@ -293,20 +293,20 @@ const loginComponent = {
       `;
             
       document.body.append(divNovaSenha);
-      this.configurarDialogoSenha(divNovaSenha);
+      this.configurarDialogoSenha(divNovaSenha, pSelf);
     },
 
-    configurarDialogoSenha(pDiv) {
+    configurarDialogoSenha(pDiv, pSelf) {
       setTimeout(() => {
         const botaofechar = pDiv.querySelector(".botaofechar");
         const input = pDiv.querySelector(".txtSenha");
         const botaoConfirmar = pDiv.querySelector("#confirmar");
                 
-        const fechar = () => this.fechar(pDiv);
+        const fechar = () => pSelf.fechar(pDiv);
         const confirmar = async () => {
           if (input.value) {
-            this.senhaDev = input.value;
-            await this.salvarSenha(this.senhaDev);
+            pSelf.senhaDev = input.value;
+            await pSelf.salvarSenha(pSelf.senhaDev);
             fechar();
             localStorage.setItem('userRole', "Noivo/Noiva");
             Router.push('/presentes');
