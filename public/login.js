@@ -17,16 +17,16 @@ const loginComponent = {
   template: document.getElementById("login-template").innerHTML,
   methods: {
     abrirModalAdmin() {
-      this.criarModal("INSIRA A SENHA", "Insira a senha de desenvolvedor", "Senha incorreta.");
+      this.criarModal("INSIRA A SENHA", "Insira a senha de desenvolvedor", "Senha incorreta.", "");
     },
     abrirModalConvidado() {
-      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome", "Nome incorreto ou não consta na lista.");
+      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome", "Nome incorreto ou não consta na lista.", "");
     },
     abrirModalConfirmacao() {
-      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome para confirmar", "Nome incorreto ou não consta na lista.");
+      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome para confirmar", "Nome incorreto ou não consta na lista.", "Sua presença é especial para nós! Confirme apenas se ter a certeza que irá comparecer.");
     },
 
-    criarModal(pTitulo, pPlaceholder, pMensagemErro) {
+    criarModal(pTitulo, pPlaceholder, pMensagemErro, pMensagemConfirmacao) {
       const novaDiv = document.createElement('div');
       novaDiv.id = "senha";
       novaDiv.innerHTML = `
@@ -36,6 +36,7 @@ const loginComponent = {
             <button class="botaofechar">X</button>
           </div>
           <div class="bodybox">
+            <p class="aviso-conf">${ pMensagemConfirmacao}</p>
             <input class="txtSenha" placeholder="${pPlaceholder}">
             <p class="invalido">${pMensagemErro}</p>
             <button id="confirmar">Confirmar</button>
@@ -265,7 +266,6 @@ const loginComponent = {
             
       if (this.senhaDev === null) {
         this.mostrarDialogoSenha(pElemento);
-        return true;
       }
       return this.senhaDev === pValor;
     },

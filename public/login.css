@@ -10,6 +10,15 @@
     width: 100%;
 }
 
+.aviso-conf {
+    color: #4A3A2A;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    font-family: "Cantata One", serif;
+}
+
 .titulocab {
     font-style: inherit;
     color: 	#f1c8b2;
