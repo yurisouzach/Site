@@ -5,11 +5,12 @@ const presentesComponent = {
     setup() {
         //controle de acesso
          const userRole = ref(localStorage.getItem('userRole'));
+         const usuarioLogado = ref(localStorage.getItem('userName'));
          const acessoDev = computed(() => {
             return userRole.value !== 'convidado';
         });
         //titulo
-        const titulo = ref('Bem vindo Fulano!');
+        const titulo = ref(`Bem vindo ${acessoDev ? "Noivo/Noiva" : usuarioLogado.value.split(' ')[0]}!`);
         //telas
         const mostrarModalCriar = ref(false);
         const mostrarModalSelecionado = ref(false);
@@ -169,7 +170,7 @@ const presentesComponent = {
                 mostrarModalParte.value = false;
                 try {
 
-                    const req = await api.put('/DoarParte', null, { params: { valordoado: valorDoacao.value, usuario: "ver como pegar", cdPresente: presenteSelecionado.value.cdPresente } });
+                    const req = await api.put('/DoarParte', null, { params: { valordoado: valorDoacao.value, usuario: usuarioLogado.value, cdPresente: presenteSelecionado.value.cdPresente } });
                     if (req.data.sucesso) {
                         valorDoacao.value = 0;
                         await carregarPresentes();
@@ -186,7 +187,7 @@ const presentesComponent = {
             else {
                 try {
 
-                    const req = await api.put('/DoarTotal', null, { params: { valorDaodo: presenteSelecionado.value.ValorPresente, usuario: "ver como pegar", cdPresente: presenteSelecionado.value.cdPresente}})
+                    const req = await api.put('/DoarTotal', null, { params: { valorDaodo: presenteSelecionado.value.ValorPresente, usuario: usuarioLogado.value, cdPresente: presenteSelecionado.value.cdPresente}})
                     if (req.data.sucesso) {
                         await carregarPresentes();
                     }

@@ -114,6 +114,7 @@ const loginComponent = {
         if (retorno) {
           pSelf.fechar(novaDiv);
           localStorage.setItem('userRole', "convidado");
+          localStorage.setItem('userName', pSelf.nomeConv.nome);
           Router.push('/presentes');
         //pSelf.CriarModalManut();
         }
@@ -236,6 +237,7 @@ const loginComponent = {
             fechar();
             await self.ConfirmarConvidado(pValor);
             localStorage.setItem('userRole', "convidado");
+            localStorage.setItem('userName', pSelf.nomeConv.nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
@@ -245,6 +247,7 @@ const loginComponent = {
           botaoCancelar.addEventListener("click", () => {
             fechar();
             localStorage.setItem('userRole', "convidado");
+            localStorage.setItem('userName', pSelf.nomeConv.nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
