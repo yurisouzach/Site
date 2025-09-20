@@ -9,7 +9,7 @@ const loginComponent = {
           senhaDev: "",
           nomeConv: null,
           api: window.axios.create({
-              baseURL: 'https://site-production-a8bd-casamento.up.railway.app/',
+              baseURL: 'https://casamento.up.railway.app/',
               //baseURL: 'http://localhost:3000/',
               timeout: 50000,
           })
