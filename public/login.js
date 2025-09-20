@@ -21,10 +21,10 @@ const loginComponent = {
       this.criarModal("INSIRA A SENHA", "Insira a senha de desenvolvedor", "Senha incorreta.", "");
     },
     abrirModalConvidado() {
-      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome", "Nome incorreto ou não consta na lista.", "");
+      this.criarModal("INSIRA SEU NOME", "Insira seu nome", "Nome incorreto ou não consta na lista.", "");
     },
     abrirModalConfirmacao() {
-      this.criarModal("INSIRA SEU NOME COMPLETO", "Insira seu nome para confirmar", "Nome incorreto ou não consta na lista.", "Sua presença é especial para nós! Confirme apenas se ter a certeza que irá comparecer.");
+      this.criarModal("INSIRA SEU NOME", "Insira seu nome para confirmar", "Nome incorreto ou não consta na lista.", "Sua presença é especial para nós! Confirme apenas se ter a certeza que irá comparecer.");
     },
 
     criarModal(pTitulo, pPlaceholder, pMensagemErro, pMensagemConfirmacao) {
@@ -109,8 +109,8 @@ const loginComponent = {
           //pSelf.CriarModalManut();
         }
       } 
-      else if (pTitulo === "INSIRA SEU NOME COMPLETO" && pPlaceholder === "Insira seu nome") {
-        retorno = await pSelf.validarConvidado(pValor, novaDiv, pSelf);
+      else if (pTitulo === "INSIRA SEU NOME" && pPlaceholder === "Insira seu nome") {
+        retorno = await pSelf.validarConvidado(pValor, novaDiv, false);
         if (retorno) {
           pSelf.fechar(novaDiv);
           localStorage.setItem('userRole', "convidado");
@@ -177,15 +177,19 @@ const loginComponent = {
     },
 
     async validarConfirmacao(pValor, pElemento) {
-      let nome = this.processarNome(pValor);
+      //let nome = this.processarNome(pValor);
       this.nomeConv = await this.ConfirmarConvidado(nome);
       return this.nomeConv?.nome != null && this.nomeConv?.sucesso;
     },
 
     async validarConvidado(pValor, pElemento, pConfirmando = false) {
-      let nome = this.processarNome(pValor);
-      this.nomeConv = await this.BuscarConvidado(nome);
-            
+      //let nome = this.processarNome(pValor);
+      this.nomeConv = await this.BuscarConvidado(pValor);
+      
+      if (this.nomeConv?.length > 1) {
+        this.nomeConv = this.CriarModalNomeDuplicado()
+      }
+
       if (this.nomeConv?.confirmado) {
         return true;
       }
@@ -193,10 +197,55 @@ const loginComponent = {
         this.mostrarDivConfirmacao(pValor, pElemento);
         return false;
       }
-      else if (pConfirmando)
+      else if (pConfirmando !== false)
         return true;
       else
         return false;
+    },
+
+    CriarModalNomeDuplicado() {
+      const divNaoConfirmado = document.createElement('div');
+      divNaoConfirmado.id = "escolherNome";
+      divNaoConfirmado.innerHTML = `
+        <div class="containersenha">
+          <div class="titulo">
+            <h1 id="h1b" class="h1box">QUAL SEU SOBRENOME?</h1>
+            <button class="botaofechar">X</button>
+          </div>
+          <div class="bodybox">
+            <p class="texto">Opa, encontrei dois convidados com esse nome, quem é você?</p>
+            <button id="nome0" class="cancelar">${nomeConv.data[0].nome}</button>
+            <button id="nome1" class="confirmar">${nomeConv.data[1].nome}</button>
+          </div>
+        </div>
+      `;
+            
+      document.body.append(divNaoConfirmado);
+      this.configurarDialogoNomeDup(divNaoConfirmado);
+    },
+
+    configurarDialogoNomeDup(pElemento) {
+      var self = this;
+      setTimeout(() => {
+        const botaoFechar = pElemento.querySelector(".botaofechar");
+        const nome1 = pElemento.querySelector("#nome1");
+        const nome0 = pElemento.querySelector("#nome0");
+                
+        const fechar = () => self.fechar(pElemento);
+                
+        if (botaoFechar) botaoFechar.addEventListener("click", fechar);
+                
+        if (nome1) {
+          nome1.addEventListener("click", () => {
+            pSelf.nomeConv = pSelf.nomeConv.data[1];
+          });
+        }
+        else {
+          nome0.addEventListener("click", () => {
+            pSelf.nomeConv = pSelf.nomeConv.data[0];
+          });
+        }
+      })
     },
 
     mostrarDivConfirmacao(pValor, pElemento) {
@@ -255,18 +304,18 @@ const loginComponent = {
       }, 0);
     },
 
-    processarNome(pNomeCompleto) {
-      const preposicoes = ["de", "da", "das", "do", "dos", "e"];
-      const partesNome = pNomeCompleto
-      .split(" ")
-      .filter(parte => !preposicoes.includes(parte.toLowerCase()));
+    // processarNome(pNomeCompleto) {
+    //   const preposicoes = ["de", "da", "das", "do", "dos", "e"];
+    //   const partesNome = pNomeCompleto
+    //   .split(" ")
+    //   .filter(parte => !preposicoes.includes(parte.toLowerCase()));
 
-      const primeiroNome = partesNome[0];
-      const sobrenome = partesNome[1];
-      const inicialSobrenome = sobrenome ? `${sobrenome.charAt(0)}.` : "";
+    //   const primeiroNome = partesNome[0];
+    //   const sobrenome = partesNome[1];
+    //   const inicialSobrenome = sobrenome ? `${sobrenome.charAt(0)}.` : "";
 
-      return primeiroNome + " " + inicialSobrenome;
-    },
+    //   return primeiroNome + " " + inicialSobrenome;
+    // },
 
     async validarSenha(pValor, pElemento, pSelf) {
       this.senhaDev = await this.buscarDadosDev();

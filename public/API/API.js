@@ -45,7 +45,7 @@ app.get('/getConvidado', async (req, res) => {
   try {
     const { nome } = req.query;
     const result = await pool.query(
-      'SELECT * FROM convidados WHERE "nome" = $1',
+      `SELECT * FROM convidados WHERE nome ILIKE $1 || '%' OR nome ILIKE '% ' || $1 || '%'`,
       [nome]
     );
 
@@ -194,28 +194,6 @@ const storage = new CloudinaryStorage({
 });
 
 const upload = multer({ storage: storage });
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     const uploadDir = path.join(__dirname, '..', 'Images', 'presentes');
-//     if (!fs.existsSync(uploadDir)) {
-//       fs.mkdirSync(uploadDir, { recursive: true });
-//     }
-//     cb(null, uploadDir);
-//   },
-//   filename: function (req, file, cb) {
-//     const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
-//     cb(null, uniqueName);
-//   }
-// });
-
-
-// const upload = multer({ 
-//   storage: storage,
-//   limits: {
-//     fileSize: 5 * 1024 * 1024 // 5MB
-//   }
-// });
 
 app.post('/SalvarPresente', upload.single('imagem'), async (req, res) => {
   try {
