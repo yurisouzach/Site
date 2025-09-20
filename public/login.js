@@ -187,6 +187,7 @@ const loginComponent = {
       this.nomeConv = await this.BuscarConvidado(pValor);
       
       if (this.nomeConv?.length > 1) {
+        this.fechar(pElemento);
         this.nomeConv = await this.CriarModalNomeDuplicado(this)
       }
 
