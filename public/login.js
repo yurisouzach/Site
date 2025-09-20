@@ -187,7 +187,7 @@ const loginComponent = {
       this.nomeConv = await this.BuscarConvidado(pValor);
       
       if (this.nomeConv?.length > 1) {
-        this.nomeConv = this.CriarModalNomeDuplicado()
+        this.nomeConv = await this.CriarModalNomeDuplicado(this)
       }
 
       if (this.nomeConv?.confirmado) {
@@ -203,7 +203,8 @@ const loginComponent = {
         return false;
     },
 
-    CriarModalNomeDuplicado() {
+    CriarModalNomeDuplicado(pSelf) {
+      return new Promise((resolve) => {
       const divNaoConfirmado = document.createElement('div');
       divNaoConfirmado.id = "escolherNome";
       divNaoConfirmado.innerHTML = `
@@ -214,38 +215,41 @@ const loginComponent = {
           </div>
           <div class="bodybox">
             <p class="texto">Opa, encontrei dois convidados com esse nome, quem é você?</p>
-            <button id="nome0" class="cancelar">${nomeConv.data[0].nome}</button>
-            <button id="nome1" class="confirmar">${nomeConv.data[1].nome}</button>
+            <button id="nome0" class="cancelar">${pSelf.nomeConv[0].nome}</button>
+            <button id="nome1" class="confirmar">${pSelf.nomeConv[1].nome}</button>
           </div>
         </div>
       `;
             
       document.body.append(divNaoConfirmado);
-      this.configurarDialogoNomeDup(divNaoConfirmado);
+      this.configurarDialogoNomeDup(divNaoConfirmado, resolve, pSelf);
+      });
     },
 
-    configurarDialogoNomeDup(pElemento) {
-      var self = this;
-      setTimeout(() => {
+    configurarDialogoNomeDup(pElemento, resolve, pSelf) {
         const botaoFechar = pElemento.querySelector(".botaofechar");
         const nome1 = pElemento.querySelector("#nome1");
         const nome0 = pElemento.querySelector("#nome0");
                 
-        const fechar = () => self.fechar(pElemento);
+        const fechar = () =>  {
+          pElemento.remove();
+          resolve(null);
+        }
                 
         if (botaoFechar) botaoFechar.addEventListener("click", fechar);
                 
         if (nome1) {
           nome1.addEventListener("click", () => {
-            pSelf.nomeConv = pSelf.nomeConv.data[1];
+            pElemento.remove();
+            resolve(pSelf.nomeConv[1]);
           });
         }
-        else {
+        if (nome0) {
           nome0.addEventListener("click", () => {
-            pSelf.nomeConv = pSelf.nomeConv.data[0];
+            pElemento.remove();
+            resolve(pSelf.nomeConv[0]);
           });
         }
-      })
     },
 
     mostrarDivConfirmacao(pValor, pElemento) {
@@ -286,7 +290,7 @@ const loginComponent = {
             fechar();
             await self.ConfirmarConvidado(pValor);
             localStorage.setItem('userRole', "convidado");
-            localStorage.setItem('userName', pSelf.nomeConv.nome);
+            localStorage.setItem('userName', self.nomeConv.nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
@@ -296,7 +300,7 @@ const loginComponent = {
           botaoCancelar.addEventListener("click", () => {
             fechar();
             localStorage.setItem('userRole', "convidado");
-            localStorage.setItem('userName', pSelf.nomeConv.nome);
+            localStorage.setItem('userName', self.nomeConv.nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
@@ -419,7 +423,7 @@ const loginComponent = {
           params: { nome: pNome }
         });
         if (response.data.hasData) {
-          return response.data.data[0];
+          return response.data.data;
         }
         return null;
       } catch (error) {
