@@ -323,7 +323,7 @@ app.put('/DoarTotal', async (req, res) => {
            "cdPresente" = $2
        WHERE "nome" = $3
        RETURNING *`,
-       [ parseFloat(valordoado), cdPresente, usuario]
+       [valordoado, cdPresente, usuario]
     );
 
     res.json({
