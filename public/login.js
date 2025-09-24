@@ -178,7 +178,7 @@ const loginComponent = {
 
     async validarConfirmacao(pValor, pElemento) {
       //let nome = this.processarNome(pValor);
-      this.nomeConv = await this.ConfirmarConvidado(nome);
+      this.nomeConv = await this.ConfirmarConvidado(this.nomeConv.nome);
       return this.nomeConv?.nome != null && this.nomeConv?.sucesso;
     },
 
