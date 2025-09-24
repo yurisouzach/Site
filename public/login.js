@@ -191,10 +191,10 @@ const loginComponent = {
         this.nomeConv = await this.CriarModalNomeDuplicado(this)
       }
 
-      if (this.nomeConv[0]?.confirmado) {
+      if (this.nomeConv[0]?.confirmado || this.nomeConv?.confirmado) {
         return true;
       }
-      else if (this.nomeConv && !this.nomeConv[0].confirmado && !pConfirmando) {
+      else if (this.nomeConv && !this.nomeConv[0].confirmado || this.nomeConv?.confirmado && !pConfirmando) {
         this.mostrarDivConfirmacao(pValor, pElemento);
         return false;
       }
