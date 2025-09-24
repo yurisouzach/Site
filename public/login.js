@@ -114,7 +114,7 @@ const loginComponent = {
         if (retorno) {
           pSelf.fechar(novaDiv);
           localStorage.setItem('userRole', "convidado");
-          localStorage.setItem('userName', pSelf.nomeConv.nome);
+          localStorage.setItem('userName', pSelf.nomeConv[0].nome);
           Router.push('/presentes');
         //pSelf.CriarModalManut();
         }
@@ -191,10 +191,10 @@ const loginComponent = {
         this.nomeConv = await this.CriarModalNomeDuplicado(this)
       }
 
-      if (this.nomeConv?.confirmado) {
+      if (this.nomeConv[0]?.confirmado) {
         return true;
       }
-      else if (this.nomeConv && !this.nomeConv.confirmado && !pConfirmando) {
+      else if (this.nomeConv && !this.nomeConv[0].confirmado && !pConfirmando) {
         this.mostrarDivConfirmacao(pValor, pElemento);
         return false;
       }
@@ -291,7 +291,7 @@ const loginComponent = {
             fechar();
             await self.ConfirmarConvidado(pValor);
             localStorage.setItem('userRole', "convidado");
-            localStorage.setItem('userName', self.nomeConv.nome);
+            localStorage.setItem('userName', self.nomeConv[0].nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
@@ -301,7 +301,7 @@ const loginComponent = {
           botaoCancelar.addEventListener("click", () => {
             fechar();
             localStorage.setItem('userRole', "convidado");
-            localStorage.setItem('userName', self.nomeConv.nome);
+            localStorage.setItem('userName', self.nomeConv[0].nome);
             Router.push('/presentes');
             //pSelf.CriarModalManut();
           });
