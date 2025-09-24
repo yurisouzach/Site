@@ -187,7 +187,7 @@ const presentesComponent = {
             else {
                 try {
 
-                    const req = await api.put('/DoarTotal', null, { params: { valorDaodo: presenteSelecionado.value.ValorPresente, usuario: usuarioLogado.value, cdPresente: presenteSelecionado.value.cdPresente}})
+                    const req = await api.put('/DoarTotal', null, { params: { valordoado: presenteSelecionado.value.ValorPresente, usuario: usuarioLogado.value, cdPresente: presenteSelecionado.value.cdPresente}})
                     if (req.data.sucesso) {
                         await carregarPresentes();
                     }
