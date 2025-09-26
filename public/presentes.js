@@ -10,7 +10,7 @@ const presentesComponent = {
             return userRole.value !== 'convidado';
         });
         //titulo
-        const titulo = ref(`Bem vindo ${acessoDev.value ? "Noivo/Noiva" : usuarioLogado.value.split(' ')[0]}!`);
+        const titulo = ref(`Bem vindo(a) ${acessoDev.value ? "Noivo/Noiva" : usuarioLogado.value.split(' ')[0]}!`);
         //telas
         const mostrarModalCriar = ref(false);
         const mostrarModalSelecionado = ref(false);
