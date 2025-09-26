@@ -43,10 +43,12 @@ h1 {
 
 .cancelar {
     font-family: "Cantata One", serif;
+    width: 350px;
 }
 
 .confirmar {
     font-family: "Cantata One", serif;
+    width: 350px;
 }
 
 .ok {
