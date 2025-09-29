@@ -184,7 +184,7 @@ const loginComponent = {
 
     async validarConvidado(pValor, pElemento, pConfirmando = false) {
       //let nome = this.processarNome(pValor);
-      this.nomeConv = await this.BuscarConvidado(pValor);
+      this.nomeConv = await this.BuscarConvidado(pValor.trim());
       
       if (this.nomeConv?.length > 1) {
         this.fechar(pElemento);
