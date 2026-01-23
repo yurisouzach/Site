@@ -1,30 +1,56 @@
 const { createRouter, createWebHistory } = VueRouter;
 
-import login from './login.js';
-import presentes from './presentes.js';
+//import login from './components/loginM1.js';
+//import presentes from './components/presentesM1.js';
 
 const routes = [
   {
     path: '/',
     name: 'inicio',
-    component: login
+    component: () => import('./components/loginM2.js')
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () => import('./components/homeM2.js')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('./components/userM2.js')
+  },
+  {
+    path: '/gift',
+    name: 'gift',
+    component: () => import('./components/giftsM2.js')
+  },
+  {
+    path: '/check',
+    name: 'check',
+    component: () => import('./components/checkM2.js')
+  },
+  {
+    path: '/homeGuest',
+    name: 'homeGuest',
+    component: () => import('./components/guestHomeM2.js')
   },
   {
     path: '/presentes',
     name: 'Presentes', 
-    component: presentes,
+    component: () => import('./components/presentesM1.js'),
     meta: { requiresAuth: true }
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/'
+    name: 'inicio',
+    component: () => import('./components/loginM2.js')
   }
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHashHistory(),
   routes
-});
+})
 
 // Guarda de navegação com troca de CSS
 router.beforeEach((to, from, next) => {

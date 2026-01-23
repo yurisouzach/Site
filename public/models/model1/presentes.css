@@ -1,0 +1,430 @@
+.corpo.tela-presentes .headder {
+    background-color: #3e4b27;
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;   
+    justify-content: center;
+    color: aliceblue;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.corpo.tela-presentes .header h1, .header p {
+    font-size: clamp(14px, 3vw, 24px);
+    color: #f1c8b2;
+    white-space: normal;
+    text-align: center;
+    margin: 2px 0;
+    width: 90%;
+}
+
+.corpo.tela-presentes p {
+    font-family: "Cantata One", serif;
+}
+
+.corpo.tela-presentes .body {
+    flex: 1;
+    background-color: #3e4b27;
+    width: 70%;
+    flex-direction: column;
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.corpo.tela-presentes .pesquisa {
+    background-color: #e9cca5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    
+}
+
+.corpo.tela-presentes #btncriar {
+    margin-right: 5px;
+}
+
+.corpo.tela-presentes .presentes {
+    height: 100%;
+}
+
+.corpo.tela-presentes #titulo {
+    padding-left: 10px;
+    color: #f1c8b2;
+    font-family: "Petit Formal Script", cursive;
+}
+
+.corpo.tela-presentes #texto {
+    padding-left: 10px;
+    color: #f1c8b2;
+    font-family: "Cantata One", serif;
+}
+
+.corpo.tela-presentes button {
+    /* background-color:#97a777; */
+    background-color:#4a5d23;
+    /* color:#aa7a00; */
+    color: #f1c8b2;
+    padding: 10px;
+    text-align: center;;
+    line-height: 10px;
+    border:none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 170px;
+    height: 30px;
+    border: 1px solid #D4AF37;
+    font-family: "Cantata One", serif;
+    font-size: 15px;
+
+}
+    .corpo.tela-presentes .botao:hover {
+        background-color:#5A7A1D;
+        transform: scale(1.02);
+    }
+
+.corpo.tela-presentes #search {
+    background-color: #b5cc86;
+    /* color: #aa7a00; */
+    color: #320311;
+    border: none;
+    height: 20px;
+    width: 150px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.tela-presentes {
+  min-height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.corpo.tela-presentes {
+    background-attachment: fixed;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-image: url("./Images/fundo_presentes.jpg");
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.corpo.tela-presentes .presente-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 5px 20px;
+    align-items: start;
+    padding: 15px;
+    border: 1px solid #D4AF37;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #e9cca5;
+    height: 100px;
+    min-height: 120px;
+}
+
+.corpo.tela-presentes .presente-item.selecionado {
+    opacity: 0.7;
+    background-color: #d4c4ae;
+    position: relative;
+}
+
+.corpo.tela-presentes .presente-item.selecionado::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.1) 50%, transparent 60%);
+    pointer-events: none;
+}
+
+.corpo.tela-presentes .presente-item.selecionado .presente-nome,
+.corpo.tela-presentes .presente-item.selecionado .presente-descricao,
+.corpo.tela-presentes .presente-item.selecionado .presente-valor {
+    text-decoration: line-through;
+    color: #888 !important;
+}
+
+.corpo.tela-presentes .presente-item.selecionado .image {
+    filter: grayscale(100%);
+}
+
+.corpo.tela-presentes .presente-item.selecionado::after {
+    content: "Presente Esgotado";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    background-color: rgba(74, 93, 35, 0.9);
+    color: #f1c8b2;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.corpo.tela-presentes .presente-conteudo {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 8px;
+}
+
+.corpo.tela-presentes .presente-nome {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Petit Formal Script", cursive;
+}
+
+.corpo.tela-presentes .presente-descricao {
+    margin: 5px 0;
+    color: #666;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    font-family: "Cantata One", serif;
+}
+
+.corpo.tela-presentes .presente-valor {
+    margin: 0;
+    font-weight: bold;
+    color: #073d14;
+    font-size: 16px;
+    font-family: "Cantata One", serif;
+}
+
+.corpo.tela-presentes .btn-selecionar {
+    grid-column: 3;
+    grid-row: 3;
+    align-self: end;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 200px;;
+}
+
+.corpo.tela-presentes .image {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-self: center;
+}
+
+.corpo.tela-presentes .erro {
+  color: #ff4444;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.corpo.tela-presentes button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.corpo.tela-presentes .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.corpo.tela-presentes .form-container {
+    flex: 1;
+}
+
+.corpo.tela-presentes .conteiner-geral {
+    background: #e9cca5;
+    border-radius: 8px;
+    width: 800px;
+    max-width: 90%;
+    position: relative;
+}
+
+.corpo.tela-presentes .h1box-prsnt {
+    padding-left: 10px;
+    color: #f1c8b2;
+    font-family: "Cantata One", serif;
+}
+
+.corpo.tela-presentes .botaofechar-prsnt {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.corpo.tela-presentes .titulo-prsnt {
+    background-color: #3e4b27;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.corpo.tela-presentes .bodycp {
+    display: flex;
+    gap: 20px;
+}
+
+.corpo.tela-presentes .create {
+    flex: 1;
+    padding-left: 15px;
+    border-right: 1px solid #3e4b27;
+    flex-direction: column;
+}
+
+.corpo.tela-presentes .preview {
+    flex: 1;
+    flex-direction: column;
+    border: 1px dashed #D4AF37;
+    padding: 15px;
+    border-radius: 8px;
+    height: 100%;
+    margin-top: 30px;
+    margin-right: 30px;
+}
+
+.corpo.tela-presentes .lbl {
+    margin-top: 0px;
+    padding-top: 15px;
+    color: #363319;
+}
+
+.corpo.tela-presentes .inpimg {
+    color: #363319;
+    box-sizing: border-box;
+    overflow: visible;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.corpo.tela-presentes input[type="file"]::file-selector-button {
+    background-color: #b5cc86;
+    color: #320311;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.corpo.tela-presentes input[type="file"]::file-selector-button:hover {
+    background-color: #5f703b;
+}
+
+.corpo.tela-presentes .txt-prsnt {
+    background-color: #b5cc86;
+    /* color: #aa7a00; */
+    color: #320311;
+    border: none;
+    height: 20px;
+    width: 150px;
+    font-size: 12px;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+
+.corpo.tela-presentes #adicionar {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.corpo.tela-presentes #valor {
+    margin-bottom: 15px;
+}
+
+.corpo.tela-presentes .conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #e9cca5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.corpo.tela-presentes .botoes {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.corpo.tela-presentes #slc {
+    margin: 0 auto;
+}
+
+.corpo.tela-presentes .btn-repensar {
+    margin-left: 10px;
+}
+
+.corpo.tela-presentes .btn-parte {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.corpo.tela-presentes .btn-total {
+    margin-right: 10px;
+}
+
+.corpo.tela-presentes .btn-confirmar {
+    margin-right: 0px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.corpo.tela-presentes #valordoacao {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.corpo.tela-presentes .btn-feito {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.corpo.tela-presentes #texto-else {
+    color: #363319;
+}

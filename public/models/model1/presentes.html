@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="presentes.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="presentes.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="headder">
+            <h1 id="titulo">{{ titulo }}</h1>
+            <p id="texto">Nesta página, você encontrará uma lista dos presentes que escolhemos com muito carinho. Como estamos em um momento especial de organização, pedimos gentilmente o valor em vez do presente físico, pois ainda não temos espaço para guardá-los. <br><br> Assim, quando for possível, poderemos adquirir cada item com a mesma alegria que vocês nos deram ao presentear. Agradecemos de coração pelo carinho e compreensão!</p>
+        </div>
+        <div class="body">
+            <div class="pesquisa">
+                <input id="search" type="text" v-model="termoBusca" placeholder="Buscar presente..." class="search-input">
+                <button id="btncriar" @click="CriarModalPresente">Criar Presente</button>
+            </div>
+            <div id="listapresentes" class="presentes">
+                <div v-for="presente in presentesFiltrados" :key="presente.id" class="presente-item">
+                    <img v-if="presente.imagem" :src="presente.imagem" :alt="presente.nome" class="image">
+                    <div class="presente-conteudo">
+                        <h3 class="presente-nome">{{ presente.nome }}</h3>
+                        <p class="presente-descricao">{{ presente.descricao }}</p>
+                        <p class="presente-valor">Valor: R$ {{ presente.valor }}</p>
+                    </div>
+                    <button @click="selecionarPresente(presente)" class="btn-selecionar">Selecionar Presente</button>
+                </div>
+            </div>
+        </div>
+        <div v-if="mostrarModal" class="modal-overlay">
+            <div class="conteiner-geral">
+                <div class="titulo">
+                    <h1 class="h1box">Criar Presentes</h1>
+                    <button class="botaofechar" @click="mostrarModal = false">X</button>
+                </div>
+                <div class="bodycp">
+                    <div class="create">
+                        <p class="lbl">Imagem</p>
+                        <input  @change="handleImageUpload" type="file" accept="image/*" class="inpimg">
+                        <p class="lbl">Nome</p>
+                        <input v-model="novoPresente.nome" class="txt" placeholder="Nome do Presente">
+                        <p class="lbl">Descrição</p>
+                        <input v-model="novoPresente.descricao" class="txt" placeholder="Descrição do Presente">
+                        <p class="lbl">Valor</p>
+                        <input v-model="novoPresente.valor" class="txt" id="valor" placeholder="Valor do Presente" type="number">
+                    </div>
+                    <div class="preview">
+                        <div v-if="novoPresente.nome || novoPresente.descricao || novoPresente.valor || imagemFile" class="preview-item">
+                            <div class="presente-item">
+                                <img v-if="imagemFile" :src="imagemFile" alt="Preview" style="max-width: 100px; max-height: 100px;" class="image">
+                                <div class="presente-conteudo">
+                                    <h4 class="presente-nome">{{ novoPresente.nome || "Nome do Presente" }}</h4>
+                                    <p class="presente-descricao">{{ novoPresente.descricao || "Descrição do presente" }}</p>
+                                    <p class="presente-valor">Valor: R$ {{ novoPresente.valor || "0,00" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p v-else style="color: #363319">Os dados do presente aparecerão aqui...</p>
+                    </div>
+                    <button id="adicionar" @click="adicionarPresente">Salvar Presente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>

@@ -1,0 +1,305 @@
+.cabecalho {
+    padding: 0px;
+    margin: 0px;
+}
+
+.contcab {
+    background-color: #3e4b27;
+    padding-top: 20px;
+    height: 20px;
+    width: 100%;
+}
+
+.aviso-conf {
+    color: #4A3A2A;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 15px;
+    font-family: "Cantata One", serif;
+}
+
+.titulocab {
+    font-style: inherit;
+    color: 	#f1c8b2;
+    margin: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-family: "Petit Formal Script", cursive;
+    font-style: normal;
+    font-size: 30px;
+}
+
+h1 {
+    /* color:  lightgray; */
+    color: #320311;
+    font-family: "Cantata One", serif;
+    font-weight: 700;
+
+}
+
+.cancelar {
+    font-family: "Cantata One", serif;
+    width: 350px;
+}
+
+.confirmar {
+    font-family: "Cantata One", serif;
+    width: 350px;
+}
+
+.ok {
+    font-family: "Cantata One", serif;
+}
+
+#bb2 {
+    margin-top: 50px;
+}
+
+button {
+    /* background-color:#97a777; */
+    background-color:#4a5d23;
+    /* color:#aa7a00; */
+    color: #320311;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;;
+    line-height: 10px;
+    border:none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 500px;
+    height: 100px;
+    font-size: 40px;
+    border: 1px solid #D4AF37;
+    font-family: "Cantata One", serif;
+    font-size: 30px;
+
+}
+    .botao:hover {
+        background-color:#5A7A1D;
+        transform: scale(1.02);
+    }
+
+#h1b {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 50px;
+    font-family: "Diphylleia", serif;
+    font-weight: 700;
+}
+
+.h1box {
+    color: #f1c8b2;
+    justify-content: unset;
+    position: absolute;
+    display: block !important;
+    top: -20px;
+    left: 5px;
+    font-size: 27px !important;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.titulo {
+    background-color: #4a5d23;
+    color: #f1c8b2;
+    padding-bottom: 20px;
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    top: -10px;
+}
+
+.txtSenha {
+    background-color: #b5cc86;
+    /* color: #aa7a00; */
+    color: #320311;
+    border: none;
+    height: 60px;
+    width: 400px;
+    font-size: 35px;
+    border-radius: 2px;
+}
+
+#confirmar {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    width: 150px;
+    height: 50px;
+    padding: 0px;
+    font-size: 25px;
+}
+
+.botaofechar {
+    position: absolute;
+    right: 10px;
+    top: -5px;
+    height: 28px;
+    width: 28px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+.texto {
+    /* color:  #4a5d23; */
+    color: #4A3A2A;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    font-family: "Cantata One", serif;
+}
+
+.containersenha {
+    /* background-color: #cfb28c; */
+    background-color:#e9cca5;
+    width: 800px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    border:none;
+    border-radius: 10px;
+}
+
+.invalido {
+    display: none;
+}
+
+.invalido.mostrar {
+    color: rgb(194, 79, 41);
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container {
+    /* background-color: #4a5d23e8; */
+    background-color: #5b7133de;
+    width: 75%;
+    height: 50%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    border:none;
+    border-radius: 50px;
+    font-family: "Lugrasimo", cursive;
+}
+
+body, html {
+    overflow: hidden;
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.corpo {
+    background-image: url("Images/fundo_mobiles.jpg");
+    background-size: 2000px;
+    background-repeat: no-repeat;
+    background-position-x: -600px;
+    background-position-y: -200px;
+}
+
+@media (max-height: 2242px) {
+    body {
+        background-image: url('Images/fundo5.jpg')!important;
+        background-size: 2000px !important;
+        background-position-x: -600px;
+        background-position-y: -200px;
+    }
+    .container {
+        top: 60%;
+        width: 75%;
+    }
+    #h1b {
+        font-size: 50px;
+    }
+    button {
+        width: 500px;
+        height: 80px;
+        font-size: 35px;
+    }
+    .txtSenha {
+        height: 40px;
+        font-size: 25px;
+    }
+}
+@media (max-height: 1773px) {
+    body {
+        background-image: url('Images/fundo5.jpg')!important;
+        background-size: 1400px !important;
+        background-position-x: -200px !important;
+        background-position-y: -0px !important;
+    }
+    .container {
+        width: 60%;
+    }
+    #h1b {
+        font-size: 40px;
+    }
+    button {
+        width: 400px;
+        height: 60px;
+        font-size: 25px;
+    }
+    .txtSenha {
+        height: 40px;
+        font-size: 20px;
+    }
+}
+@media (max-height: 1080px) {
+  body {
+    background-image: url('Images/fundo.jpg')!important;
+    background-size: cover !important;
+    background-position-x: -0px !important;
+    background-position-y: -100px !important;
+  }
+  .container {
+    width: 50%;
+    top: 65%
+  }
+  #h1b {
+    font-size: 30px;
+  }
+  button {
+    width: 300px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .containersenha {
+    height: 200px;
+  }
+}
+@media (max-height: 858px) and (min-width: 1440px) {
+    body {
+    background-image: url('Images/fundo.jpg')!important;
+    background-size: cover !important;
+    background-position-y: -80px !important;
+  }
+}
+
+
+
+
+
+
+
