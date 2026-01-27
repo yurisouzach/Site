@@ -65,7 +65,8 @@ h2 {
 }
 
 html, body {
-    min-height: 732px;
+    min-height: 100%;
+    overflow-x: hidden;
     margin: 0;
 }
 
@@ -445,8 +446,8 @@ h1 {
 }
 
 .shadow {
-    height: 100%;
-    width: 100%;
+    position: fixed;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.582);
     position: absolute;
     margin: 0 auto;
@@ -511,8 +512,6 @@ span {
 /* ----------------------------- // tela home // ----------------------------- */
 
 .home-welcome {
-    width: 100%;
-    max-width: 1433px;
     margin-bottom: 30px;
 
     background: var(--CorBody);
@@ -610,7 +609,7 @@ span {
   flex-direction: row;
   justify-content: center;
   gap: 30px;
-  width: 40%;
+  width: 50%;
   height: 40px;
   max-width: none;
 }
@@ -1101,6 +1100,11 @@ textarea {
 #save {
     width: auto;
     margin-left: 5px;
+}
+
+#save-gift {
+  width: auto;
+  margin-left: 5px;
 }
 
 .status-toggle {
@@ -2439,4 +2443,418 @@ input[type="checkbox"]:checked + .custom-check::after {
 
 .toggle-switch input:checked + .slider::before {
     transform: translateX(22px);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 45%;
+    height: 550px;
+  }
+
+  .btn-home {
+    max-width: 280px;
+  }
+
+  #btn-editguestview {
+    width: 60%;
+  }
+}
+
+@media (max-width: 945px) {
+  .btn-home {
+    max-width: 200px;
+  }
+
+  .summary-card {
+    margin: auto;
+    max-width: 230px;
+  }
+
+  .guests-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  .container-home .container-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+  }
+
+  .filter-btn {
+    width: 80px;
+    height: 30px;
+    font-size: 10px !important;
+  }
+
+  .btn-add-gift {
+    width: 80px;
+    height: 30px;
+    font-size: 9px !important;
+  }
+
+  #h1-edit {
+    font-size: 25px;
+  }
+
+  #icon-edit {
+    font-size: 25px
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 60%;
+    height: 80%;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .gift-cta {
+    padding: 10px;
+  }
+
+  #txtNome {
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .role-toggle span {
+    font-size: 16px;
+  }
+
+  .input-group input {
+    font-size: 20px;
+  }
+}
+
+@media(max-width: 711px) {
+  .container-home .container-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  #icon-edit {
+    font-size: 20px;
+  }
+
+  #h1-edit {
+    font-size: 20px;
+  }
+
+  
+  .guests-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 579px) {
+  #btn-editguestview {
+    width: 100%;
+    max-width: 320px;
+    height: 150px;
+    position: relative;
+    background: var(--CorBtnHome);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: row-reverse;
+    cursor: pointer;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+
+  .summary-card {
+    margin: auto;
+    min-width: 230px;
+  }
+
+  .checklist-header {
+    flex-direction: column;
+  }
+
+  .guests-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  #gift_confirm {
+    width: 90%;
+  }
+
+  .wedding-status {
+    width: auto;
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+  }
+
+  .guests-summary {
+    flex-direction: column;
+  }
+
+  .guests-page {
+    padding: 16px;
+  }
+
+  .contaiener-next-status {
+    flex-direction: column;
+  }
+
+  .next-steps {
+    width: auto;
+  }
+
+  .gifts-controls {
+    flex-direction: column-reverse;
+  }
+
+  .btn-home {
+    max-width: 320px;
+  }
+
+  .custom-check {
+    width: 12px;
+    height: 12px;
+  }
+
+  #check-remove {
+    width: 30px;
+    height: 20px;
+  }
+
+  .icon-btn span {
+    font-size: 12px;
+  }
+
+  .badge {
+    font-size: 9px;
+  }
+
+  .check-info p {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 545px) {
+  .container {
+    width: 50%;
+    height: 70%;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  #txtNome {
+    height: 35px;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .conf-cab + span {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .conf-cab + span + span {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .input-group input {
+    font-size: 15px;
+  }
+
+  .input-group input:focus + label, .input-group input:valid + label {
+    font-size: 15px;
+  }
+
+  .input-group label {
+    font-size: 12px;
+  }
+
+  button {
+    width: 90px;
+    height: 30px;
+    font-size: 12px !important;
+  }
+
+  #save-gift {
+    margin-top: 5px;
+    margin-left: 0px;
+  }
+
+  .role-toggle span {
+    font-size: 10px;
+  }
+
+  .container {
+    width: 80%;
+  }
+
+  .container-warning-inf {
+    flex-direction: column;
+  }
+
+  .homeGuest-headder span {
+    font-size: 10px;
+  }
+
+  .homeGuest-body span {
+    font-size: 12px;
+  }
+
+  .toggle-label {
+    font-size: 10px;
+  }
+
+  .toggle-switch {
+    height: 15px;
+    width: 40px;
+  }
+
+  .slider::before {
+    width: 9px;
+    height: 9px;
+  }
+
+  .container-warning {
+    width: 100%;
+  }
+
+  .container-inf {
+    width: 100%;
+  }
+
+  #widthadjust {
+    width: auto;
+  }
+
+  .rsvp-card {
+    max-width: 70%;
+  }
+
+  .rsvp-text {
+    font-size: 10px;
+  }
+
+  #conf-button {
+    font-size: 9px !important;
+    height: 50px;
+  }
+
+  .gift-cta {
+    padding: 5px
+  }
+
+  .gift-text h2 {
+    font-size: 20px;
+  }
+
+  .gift-icon {
+    font-size: 30px !important;
+  }
+
+  .gift-text p {
+    font-size: 10px;
+  }
+
+  .gift-button {
+    font-weight: 100;
+    font-size: 9px !important;
+    margin-top: 0px
+  }
+
+  .toggle-switch input:checked + .slider::before {
+    transform: translateX(200%);
+  }
+
+  .rsvp-header h2 {
+    font-size: 20px;
+  }
+
+  .rsvp-header span {
+    font-size: 20px;
+  }
+
+  #warning-headder {
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 416px) {
+  .btn-home {
+    max-width: 220px;
+  }
+
+  .toggle-switch input:checked + .slider::before {
+    transform: translateX(100%);
+  }
+
+  .input-group input:focus + label, .input-group input:valid + label {
+    font-size: 12px;
+  }
+
+  .actions-right {
+    flex-direction: column;
+  }
+
+  #btn-editguestview {
+    max-width: 220px;
+  }
+
+  .summary-card {
+    margin: auto;
+    min-width: 230px;
+  }
+
+  .wedding-status {
+    width: auto;
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+  }
+
+  .contaiener-next-status {
+    flex-direction: column;
+  }
+
+  .next-steps {
+    width: auto;
+  }
+
+  .checklist-actions {
+    gap: 0;
+  }
+}
+
+@media (max-width: 394px) {
+  .h1-welcome {
+    font-size: 25px !important;
+  }
+
+  .span-welcome {
+    text-align: center;
+  }
+
+  .wedding-status {
+    width: auto;
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+  }
+
+  .contaiener-next-status {
+    flex-direction: column;
+  }
+
+  .next-steps {
+    width: auto;
+  }
 }

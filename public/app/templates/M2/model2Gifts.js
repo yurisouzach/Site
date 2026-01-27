@@ -138,7 +138,7 @@ export default `
                                 <label class="image-upload-box">
                                     <input type="file" accept="image/*" @change="onImageChange" hidden>
 
-                                    <div v-if="!gift.imagePreview && !gift.imagefile" class="upload-placeholder">
+                                    <div v-if="gift.imagePreview == null && gift.imagefile == null" class="upload-placeholder">
                                         <span class="material-symbols-rounded">image</span>
                                         <p>Adicionar imagem</p>
                                     </div>
@@ -169,7 +169,7 @@ export default `
       
                         <footer class="modal-footer">
                             <button class="btn-secondary" @click="closeModal">Cancelar</button>
-                            <button class="btn-primary" id="save" @click="saveGift">Salvar Presente</button>
+                            <button class="btn-primary" id="save-gift" @click="saveGift">Salvar Presente</button>
                         </footer>
                     </div>
       
@@ -178,7 +178,7 @@ export default `
                         <div class="gift-card-preview">
 
                             <div class="gift-image">
-                                <img v-if="gift.imagePreview || gift.imagefile" :src="gift.imagePreview != null ? gift.imagePreview : gift.imagefile">
+                                <img v-if="gift.imagePreview != null || gift.imagefile != null" :src="gift.imagePreview != null ? gift.imagePreview : gift.imagefile">
                                 <span v-else class="material-symbols-rounded">card_giftcard</span>
                             </div>
 

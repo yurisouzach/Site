@@ -79,7 +79,7 @@ export default `
   @click="openEditCheck(check)"
 >
   <label @click.stop>
-    <input type="checkbox" v-model="check.done">
+    <input type="checkbox" v-model="check.done" @click="ChangeCheck(check)">
     <span class="custom-check"></span>
   </label>
 

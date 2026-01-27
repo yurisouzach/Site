@@ -73,7 +73,7 @@ export default `
             <div class="container-inf" v-if="showInf">
                 <div class="next-steps" id="widthadjust">
                     <div class="headder-warning">
-                        <h2 class="next-title">Informações</h2>
+                        <h2 class="next-title" id="warning-headder">Informações</h2>
                         <span @click="isAdmin && openInfs()" v-if="isAdmin" class="material-symbols-rounded editable">
                             add
                         </span>

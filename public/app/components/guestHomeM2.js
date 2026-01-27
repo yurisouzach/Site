@@ -103,6 +103,7 @@ export default {
         },
         
         closeModal() {
+            this.update = false;
             this.showEditModal = false;
         },
 

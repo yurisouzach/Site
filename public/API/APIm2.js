@@ -126,7 +126,7 @@ app.get('/getGuest', async (req, res) => {
     try {
         const { nome } = req.query;
         const result = await pool.query(
-        `SELECT * FROM guest WHERE name ILIKE $1 || '%' OR name ILIKE '% ' || $1 || '%' and marryid = $2`,
+        `SELECT * FROM guest WHERE marryid = $2 and name ILIKE $1 || '%' OR name ILIKE '% ' || $1 || '%'`,
         [nome, req.marriage.id]
     );
 
@@ -135,6 +135,7 @@ app.get('/getGuest', async (req, res) => {
       hasData: result.rows.length > 0,
       data: result.rows,
       count: result.rowCount,
+      marryid: req.marriage.id
     });
   }
   catch (err) {

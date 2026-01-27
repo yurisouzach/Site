@@ -44,7 +44,7 @@ export default {
     this.totalChecks = this.checks != null ? this.checks.count : 0;
     this.checkPending = this.checks != null ?  this.checks.data.filter(x => !x.done).length : 0
     const checksDone = this.totalChecks - this.checkPending
-    if (this.checksDone > 0)
+    if (checksDone > 0)
         this.checkDone = Math.round((checksDone / this.totalChecks) * 100);
     else
         this.checkDone = 0;

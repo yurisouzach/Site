@@ -97,8 +97,8 @@ export default {
     methods: {
         openAddGift() {
             if (!this.update) {
-                this.imagefile = null;
-                this.imagePreview = null;
+                this.gift.imagefile = null;
+                this.gift.imagePreview = null;
                 this.gift.name = '';
                 this.gift.giftcategory = '';
                 this.gift.price = null;

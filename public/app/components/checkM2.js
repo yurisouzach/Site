@@ -177,6 +177,13 @@ export default {
             this.openNewCheck()
         },
 
+        async ChangeCheck(pCheck) {
+            this.check = { ...pCheck }
+            this.check.duedate = this.check.duedate.slice(0, 10);
+            this.check.done = !this.check.done;
+            await this.UpdateCheck();
+        },
+
         closeModal() {
             this.showEditModal = false
             this.update = false
