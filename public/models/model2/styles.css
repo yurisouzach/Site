@@ -2540,7 +2540,6 @@ input[type="checkbox"]:checked + .custom-check::after {
     font-size: 20px;
   }
 
-  
   .guests-actions {
     flex-direction: column;
   }
@@ -2783,6 +2782,10 @@ input[type="checkbox"]:checked + .custom-check::after {
 
   #warning-headder {
     font-size: 15px;
+  }
+
+  .home-summary {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
