@@ -401,7 +401,7 @@ const upload = multer({ storage: storage });
 
 app.put('/updateGift', upload.single('image'), async (req,res) => {
     try {
-        const { id, name, giftcategory, reservedby, price } = req.body
+        const { id, name, giftcategory, reservedby, price, lastValue } = req.body
 
         let imagePath = null
 
@@ -418,28 +418,34 @@ app.put('/updateGift', upload.single('image'), async (req,res) => {
                     SET name = $1,
                     giftcategory = $2,
                     price = $3,
-                    imagefile = $4
-                    WHERE id = $5
+                    imagefile = $4,
+                    lastValue = $5,
+                    reservedby = null
+                    WHERE id = $6
                     `
-                values = [name, giftcategory, price, imagePath, id]
+                values = [name, giftcategory, price, imagePath, lastValue, id]
             } else {
                 query = `
                     UPDATE gift
                     SET name = $1,
                     giftcategory = $2,
-                    price = $3
-                    WHERE id = $4
+                    price = $3,
+                    lastValue = $4,
+                    reservedby = null
+                    WHERE id = $5
                     ` 
-                values = [name, giftcategory, price, id]
+                values = [name, giftcategory, price, lastValue, id]
             }
         }
         else {
             query = `
                     UPDATE gift
-                    SET reservedby = $1
-                    WHERE id = $2
+                    SET reservedby = $1,
+                    price = $2,
+                    lastValue = $3
+                    WHERE id = $4
                     ` 
-                values = [reservedby, id]
+                values = [reservedby, price, lastValue, id]
         }
         
         await pool.query(query, values)

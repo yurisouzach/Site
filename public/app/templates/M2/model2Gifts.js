@@ -204,14 +204,14 @@ export default `
         <div class="shadow" v-if="showConfirm">
             <div class="conf-container" id="gift_confirm">
                 <div class="conf-cab">
-                    <h1 class="title-conf">Reservar presente</h1>
+                    <h1 class="title-conf">{{this.modalTitle}}</h1>
                     <button class="btn-close" @click="CloseConfirm">X</button>
                 </div>
-                <span>Tem certeza de que deseja reservar este presente?</span>
-                <span>Ele ficará reservado para você e ajudará a tornar nossa casa ainda mais especial 💕</span>
+                <span>{{this.modalBody}}</span>
+                <span>{{this.modalMessage}}</span>
                 <div class="conf-buttons">
-                    <button class="btn-yes" @click="Confirm(true)">Sim!</button>
-                    <button class="btn-no" @click="Confirm(false)">Agora não</button>
+                    <button class="btn-yes" @click="Confirm(true)">{{this.modalButtonConfirm}}</button>
+                    <button class="btn-no" @click="Confirm(false)">{{this.modalButtonCancel}}</button>
                 </div>
             </div>
         </div>

@@ -15,6 +15,11 @@ export default {
         showGifttModal: false,
         update: false,
         showConfirm: false,
+        modalTitle: '',
+        modalMessage: '',
+        modalBody: '',
+        modalButtonConfirm: '',
+        modalButtonCancel: '',
         gifts: {
             data: [],
         },
@@ -154,8 +159,22 @@ export default {
         },
 
         selectGift(pGift) {
-            if (!this.showGifttModal && pGift.reservedby === null) {
+            if (!this.isAdmin && !this.showGifttModal && pGift.reservedby === null) {
                 this.gift = {...pGift};
+                this.modalTitle = 'Reservar presente';
+                this.modalBody = 'Tem certeza de que deseja reservar este presente?';
+                this.modalMessage = 'Ele ficará reservado para você e ajudará a tornar nossa casa ainda mais especial 💕';
+                this.modalButtonConfirm = 'Sim!';
+                this.modalButtonCancel = 'Agora não';
+                this.showConfirm = true;
+            }
+            else if (this.isAdmin && pGift.reservedby != null) {
+                this.gift = {...pGift};
+                this.modalTitle = 'Cancelar reserva do presente?';
+                this.modalBody = 'Tem certeza de que deseja cancelar a reservar deste presente?';
+                this.modalMessage = 'Esta ação remove a reserva e disponibiliza o presente novamente. Confirme antes de continuar.';
+                this.modalButtonConfirm = 'Cancelar';
+                this.modalButtonCancel = 'Não cancelar';
                 this.showConfirm = true;
             }
         },
@@ -165,9 +184,17 @@ export default {
         },
 
         async Confirm(pConfirm) {
-            if (pConfirm) {
+            if (pConfirm && !this.isAdmin) {
                 this.gift.reservedby = this.guestName;
+                this.gift.lastvalue = this.gift.price;
                 this.gift.price = 0;
+                await this.UpdateGift()
+                this.gifts = await this.GetGifts();
+            }
+            else if (pConfirm && this.isAdmin) {
+                this.gift.reservedby = null;
+                this.gift.price = this.gift.lastvalue;
+                this.gift.lastvalue = this.gift.price;
                 await this.UpdateGift()
                 this.gifts = await this.GetGifts();
             }
@@ -191,11 +218,12 @@ export default {
           try {
             const formData = new FormData()
 
-            formData.append('id', this.gift.id)
-            formData.append('name', this.gift.name)
-            formData.append('giftcategory', this.gift.giftcategory)
-            formData.append('reservedby', this.gift.reservedby)
-            formData.append('price', this.gift.price === null ? 0 : this.gift.price)
+            formData.append('id', this.gift.id);
+            formData.append('name', this.gift.name);
+            formData.append('giftcategory', this.gift.giftcategory);
+            formData.append('reservedby', this.gift.reservedby);
+            formData.append('price', this.gift.price);
+            formData.append('lastValue', this.gift.lastvalue);
 
             if (this.gift.imagefile instanceof File) {
                 formData.append('image', this.gift.imagefile)

@@ -11,7 +11,7 @@ export default `
     <div class="face face-front">
 
       <div class="cab">
-        <h1>UniLuv</h1>
+        <div class="logo"></div>
         <p class="subtitle">E serão ambos uma só carne</p>
       </div>
 
@@ -45,7 +45,7 @@ export default `
     <div class="face face-back">
 
       <div class="cab">
-        <h1>UniLuv</h1>
+        <div class="logo"></div>
         <p class="subtitle">Área dos Noivos</p>
       </div>
 

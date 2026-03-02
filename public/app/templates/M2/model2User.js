@@ -78,14 +78,18 @@ export default `
       class="guest-card"
     >
       <div class="guest-info">
-        <h3>{{ guest.name }}</h3>
+        <div style="display: flex; justify-content: center">
+          <h3>{{ guest.name }}</h3>
+        </div>
         <span>{{ guest.phone }}</span>
         <br>
         <span style="overflow-wrap: anywhere;">{{guest.description}}</span>
       </div>
 
-      <div class="guest-status" :class="guest.confirmed === 1 ? 'confirmed' : guest.confirmed === 0 ? 'pending' : 'denied'">
-        {{ guest.confirmed === 1 ? 'Confirmado' : guest.confirmed === 0 ? 'Pendente' : 'Recusado' }}
+      <div style="display: flex; justify-content: center">
+        <div class="guest-status" :class="guest.confirmed === 1 ? 'confirmed' : guest.confirmed === 0 ? 'pending' : 'denied'">
+          {{ guest.confirmed === 1 ? 'Confirmado' : guest.confirmed === 0 ? 'Pendente' : 'Recusado' }}
+        </div>
       </div>
 
       <div class="admin-actions">
