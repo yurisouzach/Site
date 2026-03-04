@@ -150,7 +150,8 @@ export default {
             const sug = this.normalize(suggestionTitle);
 
             return this.checks.data.some(item => {
-                const itemText = this.normalize(item.title);
+                const itemText = this.normalize(item.title).trim();
+                if (!itemText) return false
                 return itemText.includes(sug) || sug.includes(itemText);
             });
         },
