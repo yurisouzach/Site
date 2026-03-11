@@ -196,7 +196,7 @@ export default {
         },
 
         openNewCheck() {
-            if (!this.check.done) {
+            if (!this.check.done || !this.update) {
                 if (!this.update) {
                     this.check.title = '';
                     this.check.description = '';
