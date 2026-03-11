@@ -18,7 +18,9 @@ export default {
             model: {}
         },
         showEditModal: false,
-        ender: {},
+        ender: {
+            ender: ''
+        },
         infs: [],
         inf: {
             text: ''
@@ -92,14 +94,18 @@ export default {
     },
 
     mapsLink() {
-        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.ender.ender)}`
+        if (this.ender?.ender)
+            return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.ender.ender)}`
     }
 },
 
     methods: {
         formatDate(pDate) {
-            if (!pDate) return ''
-                return new Date(pDate).toLocaleDateString('pt-BR')
+            if (!pDate) return '';
+
+            const date = new Date(pDate);
+
+            return date.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
         },
         
         closeModal() {
@@ -290,7 +296,10 @@ export default {
         },
 
         openDeadLine() {
-            this.deadline = this.deadline.slice(0, 10);
+            if (this.deadline != null)
+                this.deadline = this.deadline.slice(0, 10);
+            else
+                this.deadline = '';
             this.editContext = {
                 type: "deadline",
                 title: 'Editar data de confirmação',
@@ -398,7 +407,10 @@ export default {
                 if (response.data.hasData) {
                     return response.data.data[0];
                 }
-                return null;
+                let tmpEnder = {
+                    emder: ''
+                }
+                return tmpEnder;
             } catch (error) {
                 console.error('Erro ao buscar o endereço:', error);
                 return null;
