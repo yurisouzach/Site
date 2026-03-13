@@ -126,7 +126,7 @@ app.get('/getGuest', async (req, res) => {
     try {
         const { nome } = req.query;
         const result = await pool.query(
-        `SELECT * FROM guest WHERE marryid = $2 and name ILIKE $1 || '%' OR name ILIKE '% ' || $1 || '%'`,
+        `SELECT * FROM guest WHERE marryid = $2 and (name ILIKE $1 || '%' OR name ILIKE '% ' || $1 || '%')`,
         [nome, req.marriage.id]
     );
 
